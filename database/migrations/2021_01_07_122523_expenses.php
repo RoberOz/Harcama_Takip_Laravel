@@ -17,6 +17,7 @@ class Expenses extends Migration
           $table->bigIncrements('id');
           $table->integer('categories_id')->unsigned();
           $table->integer('amount');
+          $table->date('date');
           $table->string('location');
           $table->timestamps();
 

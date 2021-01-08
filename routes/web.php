@@ -1,5 +1,14 @@
 <?php
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+
+
+
+
+
+
+
+Route::get('/', 'HomePageController@index')->name('home');
+
+Route::resource('process','ResourceController');

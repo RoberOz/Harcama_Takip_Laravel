@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Harcama Takip</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -15,7 +15,7 @@
             html, body {
                 background-color: #fff;
                 color: #636b6f;
-                font-family: 'Raleway', sans-serif;
+                font-family: sans-serif;
                 font-weight: 100;
                 height: 100vh;
                 margin: 0;
@@ -65,6 +65,42 @@
         </style>
     </head>
     <body>
+
+      <form method="post" action="{{url('/posts')}}" enctype="multipart/form-data">
+        <table align="center">
+          {{ csrf_field() }}
+          <tr height="35">
+            <td align="right" width = "140"><label>Harcanan Miktar: </label></td>
+            <td ><input type="text" name="amout" value="{{old('amount')}}" required></input></td>
+          </tr>
+          <tr height="35">
+            <td align="right"><label>Harcanan Yer: </label></td>
+            <td ><input type="text" name="location" value="{{old('location')}}" required></input></td>
+          </tr>
+          <tr height="35">
+            <td align="right"><label>Bir Kategori Seçin: </label></td>
+            <td >
+              <select name="categories_id">
+                <option value="">Seçim Yapınız</option>
+                @foreach ($categories as $category)
+                  <option value="{{$category->id}}">{{$category->name}}</option>
+                @endforeach
+              </select>
+            </td>
+          </tr>
+          <tr height="35">
+            <td  align="center" colspan="2"><button type="submit">Oluştur</button></td>
+          </tr>
+        </table>
+      </form>
+
+
+
+
+
+
+
+
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
