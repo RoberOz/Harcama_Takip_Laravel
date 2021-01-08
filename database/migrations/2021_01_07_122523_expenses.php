@@ -18,7 +18,7 @@ class Expenses extends Migration
           $table->integer('categories_id')->unsigned();
           $table->integer('amount');
           $table->date('date');
-          $table->string('location');
+          $table->string('location',70);
           $table->timestamps();
 
           $table->foreign('categories_id')

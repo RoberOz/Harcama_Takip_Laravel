@@ -66,12 +66,18 @@
     </head>
     <body>
 
-      <form method="post" action="{{url('/posts')}}" enctype="multipart/form-data">
+      <div style="background-color:lightblue">
+          @foreach ($errors->all() as $error)
+            <li>{{$error}}</li>
+          @endforeach
+      </div>
+
+      <form method="post" action="{{url('/process')}}">
         <table align="center">
           {{ csrf_field() }}
           <tr height="35">
             <td align="right" width = "140"><label>Harcanan Miktar: </label></td>
-            <td ><input type="text" name="amout" value="{{old('amount')}}" required></input></td>
+            <td ><input type="text" name="amount" value="{{old('amount')}}" required></input></td>
           </tr>
           <tr height="35">
             <td align="right"><label>Harcanan Yer: </label></td>
@@ -81,7 +87,7 @@
             <td align="right"><label>Bir Kategori Seçin: </label></td>
             <td >
               <select name="categories_id">
-                <option value="">Seçim Yapınız</option>
+                <option value="" required>Seçim Yapınız</option>
                 @foreach ($categories as $category)
                   <option value="{{$category->id}}">{{$category->name}}</option>
                 @endforeach

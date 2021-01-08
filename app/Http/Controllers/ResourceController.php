@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Expense;
 use Illuminate\Http\Request;
 
 class ResourceController extends Controller
@@ -34,7 +35,20 @@ class ResourceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $this->validate($request, [
+        'amount' => 'required|numeric',
+        'categories_id' => 'required|numeric',
+        'location' => 'required|max:70',
+      ]);
+
+      $expense = new Expense();
+      $expense->categories_id = $request->categories_id;
+      $expense->amount = $request->amount;
+      $expense->location = $request->location;
+
+      $expense->save();
+
+      return redirect('/');
     }
 
     /**
