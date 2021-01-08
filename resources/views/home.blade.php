@@ -66,6 +66,8 @@
     </head>
     <body>
 
+
+
       <div style="background-color:lightblue">
           @foreach ($errors->all() as $error)
             <li>{{$error}}</li>
@@ -95,14 +97,16 @@
             </td>
           </tr>
           <tr height="35">
+            <td align="right"><label>Harcanan Yer: </label></td>
+            <td >
+              <input type="date" name="date" value="{{old('location')}}" min="2020-01-01" max="2020-12-31" required></input>
+            </td>
+          </tr>
+          <tr height="35">
             <td  align="center" colspan="2"><button type="submit">Oluştur</button></td>
           </tr>
         </table>
       </form>
-
-
-
-
 
 
 

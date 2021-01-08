@@ -39,12 +39,14 @@ class ResourceController extends Controller
         'amount' => 'required|numeric',
         'categories_id' => 'required|numeric',
         'location' => 'required|max:70',
+        'date' => 'required|date',
       ]);
 
       $expense = new Expense();
-      $expense->categories_id = $request->categories_id;
-      $expense->amount = $request->amount;
-      $expense->location = $request->location;
+      $expense->categories_id=$request->categories_id;
+      $expense->amount=$request->amount;
+      $expense->location=$request->location;
+      $expense->date=$request->date;
 
       $expense->save();
 
