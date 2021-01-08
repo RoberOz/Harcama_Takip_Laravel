@@ -9,6 +9,8 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 
         <!-- Styles -->
         <style>
@@ -97,9 +99,9 @@
             </td>
           </tr>
           <tr height="35">
-            <td align="right"><label>Harcanan Yer: </label></td>
+            <td align="right"><label>Tarih: </label></td>
             <td >
-              <input type="date" name="date" value="{{old('location')}}" min="2020-01-01" max="2020-12-31" required></input>
+              <input type="date" name="date" value="{{old('location')}}" min="2020-01-01" required></input>
             </td>
           </tr>
           <tr height="35">
@@ -108,34 +110,112 @@
         </table>
       </form>
 
+<br>
+<br>
 
-
-
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
-                    @endif
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-md-offset-0">
+          <div class="panel panel-default">
+            <div class="panel-body"><strong><p align="center">En çok harcama yapılan ay</p></strong></div>
+              <?php
+                    echo $most;
+              ?>
+          </div>
         </div>
+      </div>
+    </div>
+
+<br>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-md-offset-0">
+          <div class="panel panel-default">
+            <div class="panel-body"><strong><p align="center">En az harcama yapılan ay</p></strong></div>
+              <?php
+                    echo $least;
+              ?>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<br>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-md-offset-0">
+          <div class="panel panel-default">
+            <div class="panel-body"><strong><p align="center">Son yapılan harcama</p></strong></div>
+              <div align="center">
+                  <label>Miktar: </label>
+                    {{$recent_expens->amount}}<br>
+                  <label>Yer: </label>
+                    {{$recent_expens->location}}<br>
+                  <label>Kategori: </label>
+                    @if ($recent_expens->categories_id == 1)
+                      <span>Fatura</span><br>
+                    @elseif ($recent_expens->categories_id == 2)
+                      <span>Borç</span><br>
+                    @elseif ($recent_expens->categories_id == 3)
+                      <span>Vergi</span><br>
+                    @else
+                      <span>Kategori gösteriminde bir hata oluştu!</span><br>
+                    @endif
+                  <label>Tarih: </label>
+                    {{$recent_expens->date}}
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<br>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-md-offset-0">
+          <div class="panel panel-default">
+            <div class="panel-body"><strong><p align="center">Bu ay yapılan harcamalar</p></strong></div>
+              <table width=100%>
+                <tr height="10">
+                  <td align="center"><strong>-Miktar-</strong></td>
+                  <td align="center"><strong>-Yer-</strong></td>
+                  <td align="center"><strong>-Kategori-</strong></td>
+                  <td align="center"><strong>-Tarih-</strong></td>
+                </tr>
+                  @foreach ($this_month_expenses as $this_month_expens)
+                    <tr height="50">
+                      <td align="center">{{$this_month_expens->amount}}</td>
+                      <td align="center">{{$this_month_expens->location}}</td>
+                      <td align="center">
+                        @if ($this_month_expens->categories_id == 1)
+                          <span>Fatura</span><br>
+                        @elseif ($this_month_expens->categories_id == 2)
+                          <span>Borç</span><br>
+                        @elseif ($this_month_expens->categories_id == 3)
+                          <span>Vergi</span><br>
+                        @else
+                          <span>Kategori gösteriminde bir hata oluştu!</span><br>
+                        @endif
+                      </td>
+                      <td align="center"height = 35>{{$this_month_expens->date}}</td>
+                    </tr>
+                  @endforeach
+              </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
     </body>
 </html>
