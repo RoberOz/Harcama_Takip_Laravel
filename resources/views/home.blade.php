@@ -113,33 +113,87 @@
 <br>
 <br>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 col-md-offset-0">
-          <div class="panel panel-default">
-            <div class="panel-body"><strong><p align="center">En çok harcama yapılan ay</p></strong></div>
-              <?php
-                    echo $most;
-              ?>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 col-md-offset-0">
+      <div class="panel panel-default">
+        <div class="panel-body"><strong><p align="center">En çok harcama yapılan ay</p></strong></div>
+          <div align="center">
+              <label>Ay: </label>
+              @if ($most_expense['0']->expense_month == 1)
+                Ocak
+              @elseif ($most_expense['0']->expense_month == 2)
+                Şubat
+              @elseif ($most_expense['0']->expense_month == 3)
+                Mart
+              @elseif ($most_expense['0']->expense_month == 4)
+                Nisan
+              @elseif ($most_expense['0']->expense_month == 5)
+                Mayıs
+              @elseif ($most_expense['0']->expense_month == 6)
+                Haziran
+              @elseif ($most_expense['0']->expense_month == 7)
+                Temmuz
+              @elseif ($most_expense['0']->expense_month == 8)
+                Ağustos
+              @elseif ($most_expense['0']->expense_month == 9)
+                Eylül
+              @elseif ($most_expense['0']->expense_month == 10)
+                Ekim
+              @elseif ($most_expense['0']->expense_month == 11)
+                Kasım
+              @elseif ($most_expense['0']->expense_month == 12)
+                Aralık
+              @endif<br>
+              <label>Miktar: </label>
+                {{$most_expense['0']->total_expense}}
           </div>
-        </div>
       </div>
     </div>
+  </div>
+</div>
 
 <br>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 col-md-offset-0">
-          <div class="panel panel-default">
-            <div class="panel-body"><strong><p align="center">En az harcama yapılan ay</p></strong></div>
-              <?php
-                    echo $least;
-              ?>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 col-md-offset-0">
+      <div class="panel panel-default">
+        <div class="panel-body"><strong><p align="center">En çok harcama yapılan ay</p></strong></div>
+          <div align="center">
+              <label>Ay: </label>
+              @if ($least_expense['0']->expense_month == 1)
+                Ocak
+              @elseif ($least_expense['0']->expense_month == 2)
+                Şubat
+              @elseif ($least_expense['0']->expense_month == 3)
+                Mart
+              @elseif ($least_expense['0']->expense_month == 4)
+                Nisan
+              @elseif ($least_expense['0']->expense_month == 5)
+                Mayıs
+              @elseif ($least_expense['0']->expense_month == 6)
+                Haziran
+              @elseif ($least_expense['0']->expense_month == 7)
+                Temmuz
+              @elseif ($least_expense['0']->expense_month == 8)
+                Ağustos
+              @elseif ($least_expense['0']->expense_month == 9)
+                Eylül
+              @elseif ($least_expense['0']->expense_month == 10)
+                Ekim
+              @elseif ($least_expense['0']->expense_month == 11)
+                Kasım
+              @elseif ($least_expense['0']->expense_month == 12)
+                Aralık
+              @endif<br>
+              <label>Miktar: </label>
+                {{$least_expense['0']->total_expense}}
           </div>
-        </div>
       </div>
     </div>
+  </div>
+</div>
 
 <br>
 
