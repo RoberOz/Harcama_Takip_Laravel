@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class Categories extends Migration
 {
@@ -13,10 +13,10 @@ class Categories extends Migration
      */
     public function up()
     {
-      Schema::create('categories', function (Blueprint $table) {
-          $table->bigIncrements('id');
-          $table->string('name',45);
-      });
+        Schema::create('categories', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name', 45);
+        });
     }
 
     /**
@@ -26,6 +26,5 @@ class Categories extends Migration
      */
     public function down()
     {
-        //
     }
 }
