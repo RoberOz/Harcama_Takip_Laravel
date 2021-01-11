@@ -16,32 +16,32 @@ class HomePageController extends Controller
       $categories=Category::all();
       $expenses=Expense::all();
 
-      $most_expense=Expense::select(DB::raw('MONTH(date) AS expense_month'), DB::raw('SUM(amount) AS total_expense'))
-              ->whereYear('date','2020')
+      $mostExpense=Expense::select(DB::raw('MONTH(date) AS expenseMonth'), DB::raw('SUM(amount) AS totalExpense'))
+              ->whereYear('date',Carbon::now()->year)
               ->groupBy(DB::raw("MONTH(date)"))
-              ->orderBy('total_expense','DESC')
+              ->orderBy('totalExpense','DESC')
               ->take(1)
               ->get();
 
 
-      $least_expense=Expense::select(DB::raw('MONTH(date) AS expense_month'), DB::raw('SUM(amount) AS total_expense'))
-              ->whereYear('date','2020')
+      $leastExpense=Expense::select(DB::raw('MONTH(date) AS expenseMonth'), DB::raw('SUM(amount) AS totalExpense'))
+              ->whereYear('date',Carbon::now()->year)
               ->groupBy(DB::raw("MONTH(date)"))
-              ->orderBy('total_expense','ASC')
+              ->orderBy('totalExpense','ASC')
               ->take(1)
               ->get();
 
-      $recent_expens=DB::table('expenses')
+      $recentExpens=DB::table('expenses')
               ->orderBy('date','DESC')
               ->latest()
               ->first();
 
-      $this_month_expenses=DB::table('expenses')
+      $thisMonthExpenses=DB::table('expenses')
                ->whereYear('date',Carbon::now()->year)
                ->whereMonth('date', Carbon::now()->month)
                ->get();
 
 
-      return view('home')->with(compact('categories','expenses','most_expense','least_expense','this_month_expenses','recent_expens'));
+      return view('home')->with(compact('categories','expenses','mostExpense','leastExpense','thisMonthExpenses','recentExpens'));
     }
 }

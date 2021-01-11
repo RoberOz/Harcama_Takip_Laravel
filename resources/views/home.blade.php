@@ -120,33 +120,33 @@
         <div class="panel-body"><strong><p align="center">En çok harcama yapılan ay</p></strong></div>
           <div align="center">
             <label>Ay: </label>
-              @if ($most_expense['0']->expense_month == 1)
+              @if ($mostExpense['0']->expenseMonth == 1)
                 Ocak
-              @elseif ($most_expense['0']->expense_month == 2)
+              @elseif ($mostExpense['0']->expenseMonth == 2)
                 Şubat
-              @elseif ($most_expense['0']->expense_month == 3)
+              @elseif ($mostExpense['0']->expenseMonth == 3)
                 Mart
-              @elseif ($most_expense['0']->expense_month == 4)
+              @elseif ($mostExpense['0']->expenseMonth == 4)
                 Nisan
-              @elseif ($most_expense['0']->expense_month == 5)
+              @elseif ($mostExpense['0']->expenseMonth == 5)
                 Mayıs
-              @elseif ($most_expense['0']->expense_month == 6)
+              @elseif ($mostExpense['0']->expenseMonth == 6)
                 Haziran
-              @elseif ($most_expense['0']->expense_month == 7)
+              @elseif ($mostExpense['0']->expenseMonth == 7)
                 Temmuz
-              @elseif ($most_expense['0']->expense_month == 8)
+              @elseif ($mostExpense['0']->expenseMonth == 8)
                 Ağustos
-              @elseif ($most_expense['0']->expense_month == 9)
+              @elseif ($mostExpense['0']->expenseMonth == 9)
                 Eylül
-              @elseif ($most_expense['0']->expense_month == 10)
+              @elseif ($mostExpense['0']->expenseMonth == 10)
                 Ekim
-              @elseif ($most_expense['0']->expense_month == 11)
+              @elseif ($mostExpense['0']->expenseMonth == 11)
                 Kasım
-              @elseif ($most_expense['0']->expense_month == 12)
+              @elseif ($mostExpense['0']->expenseMonth == 12)
                 Aralık
               @endif<br>
             <label>Miktar: </label>
-              {{$most_expense['0']->total_expense}}
+              {{$mostExpense['0']->totalExpense}}
           </div>
       </div>
     </div>
@@ -162,33 +162,33 @@
         <div class="panel-body"><strong><p align="center">En çok harcama yapılan ay</p></strong></div>
           <div align="center">
               <label>Ay: </label>
-              @if ($least_expense['0']->expense_month == 1)
+              @if ($leastExpense['0']->expenseMonth == 1)
                 Ocak
-              @elseif ($least_expense['0']->expense_month == 2)
+              @elseif ($leastExpense['0']->expenseMonth == 2)
                 Şubat
-              @elseif ($least_expense['0']->expense_month == 3)
+              @elseif ($leastExpense['0']->expenseMonth == 3)
                 Mart
-              @elseif ($least_expense['0']->expense_month == 4)
+              @elseif ($leastExpense['0']->expenseMonth == 4)
                 Nisan
-              @elseif ($least_expense['0']->expense_month == 5)
+              @elseif ($leastExpense['0']->expenseMonth == 5)
                 Mayıs
-              @elseif ($least_expense['0']->expense_month == 6)
+              @elseif ($leastExpense['0']->expenseMonth == 6)
                 Haziran
-              @elseif ($least_expense['0']->expense_month == 7)
+              @elseif ($leastExpense['0']->expenseMonth == 7)
                 Temmuz
-              @elseif ($least_expense['0']->expense_month == 8)
+              @elseif ($leastExpense['0']->expenseMonth == 8)
                 Ağustos
-              @elseif ($least_expense['0']->expense_month == 9)
+              @elseif ($leastExpense['0']->expenseMonth == 9)
                 Eylül
-              @elseif ($least_expense['0']->expense_month == 10)
+              @elseif ($leastExpense['0']->expenseMonth == 10)
                 Ekim
-              @elseif ($least_expense['0']->expense_month == 11)
+              @elseif ($leastExpense['0']->expenseMonth == 11)
                 Kasım
-              @elseif ($least_expense['0']->expense_month == 12)
+              @elseif ($leastExpense['0']->expenseMonth == 12)
                 Aralık
               @endif<br>
               <label>Miktar: </label>
-                {{$least_expense['0']->total_expense}}
+                {{$leastExpense['0']->totalExpense}}
           </div>
       </div>
     </div>
@@ -204,21 +204,21 @@
             <div class="panel-body"><strong><p align="center">Son yapılan harcama</p></strong></div>
               <div align="center">
                   <label>Miktar: </label>
-                    {{$recent_expens->amount}}<br>
+                    {{$recentExpens->amount}}<br>
                   <label>Yer: </label>
-                    {{$recent_expens->location}}<br>
+                    {{$recentExpens->location}}<br>
                   <label>Kategori: </label>
-                    @if ($recent_expens->categories_id == 1)
+                    @if ($recentExpens->categories_id == 1)
                       <span>Fatura</span><br>
-                    @elseif ($recent_expens->categories_id == 2)
+                    @elseif ($recentExpens->categories_id == 2)
                       <span>Borç</span><br>
-                    @elseif ($recent_expens->categories_id == 3)
+                    @elseif ($recentExpens->categories_id == 3)
                       <span>Vergi</span><br>
                     @else
                       <span>Kategori gösteriminde bir hata oluştu!</span><br>
                     @endif
                   <label>Tarih: </label>
-                    {{$recent_expens->date}}
+                    {{$recentExpens->date}}
               </div>
           </div>
         </div>
@@ -239,22 +239,22 @@
                   <td align="center"><strong>-Kategori-</strong></td>
                   <td align="center"><strong>-Tarih-</strong></td>
                 </tr>
-                  @foreach ($this_month_expenses as $this_month_expens)
+                  @foreach ($thisMonthExpenses as $thisMonthExpens)
                     <tr height="50">
-                      <td align="center">{{$this_month_expens->amount}}</td>
-                      <td align="center">{{$this_month_expens->location}}</td>
+                      <td align="center">{{$thisMonthExpens->amount}}</td>
+                      <td align="center">{{$thisMonthExpens->location}}</td>
                       <td align="center">
-                        @if ($this_month_expens->categories_id == 1)
+                        @if ($thisMonthExpens->categories_id == 1)
                           <span>Fatura</span><br>
-                        @elseif ($this_month_expens->categories_id == 2)
+                        @elseif ($thisMonthExpens->categories_id == 2)
                           <span>Borç</span><br>
-                        @elseif ($this_month_expens->categories_id == 3)
+                        @elseif ($thisMonthExpens->categories_id == 3)
                           <span>Vergi</span><br>
                         @else
                           <span>Kategori gösteriminde bir hata oluştu!</span><br>
                         @endif
                       </td>
-                      <td align="center"height = 35>{{$this_month_expens->date}}</td>
+                      <td align="center"height = 35>{{$thisMonthExpens->date}}</td>
                     </tr>
                   @endforeach
               </table>
@@ -262,13 +262,6 @@
         </div>
       </div>
     </div>
-
-
-
-
-
-
-
 
 
     </body>
