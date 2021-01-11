@@ -112,66 +112,68 @@
 
 <br>
 <br>
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-12 col-md-offset-0">
-      <div class="panel panel-default">
-        <div class="panel-body"><strong><p align="center">En çok harcama yapılan ay</p></strong></div>
-          <div align="center">
-            <label>Ay: </label>
-              {{Carbon\Carbon::createFromFormat('m',$mostExpense->expenseMonth)->format('F')}}<br>
-            <label>Miktar: </label>
-              {{$mostExpense->totalExpense}}
-          </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<br>
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-12 col-md-offset-0">
-      <div class="panel panel-default">
-        <div class="panel-body"><strong><p align="center">En az harcama yapılan ay</p></strong></div>
-          <div align="center">
+@if($mostExpense)
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-md-offset-0">
+        <div class="panel panel-default">
+          <div class="panel-body"><strong><p align="center">En çok harcama yapılan ay</p></strong></div>
+            <div align="center">
               <label>Ay: </label>
-                {{Carbon\Carbon::createFromFormat('m',$leastExpense->expenseMonth)->format('F')}}<br>
+                {{Carbon\Carbon::createFromFormat('m',$mostExpense->expenseMonth)->format('F')}}<br>
               <label>Miktar: </label>
-                {{$leastExpense->totalExpense}}
-          </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<br>
-
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 col-md-offset-0">
-          <div class="panel panel-default">
-            <div class="panel-body"><strong><p align="center">Son yapılan harcama</p></strong></div>
-              <div align="center">
-                  <label>Miktar: </label>
-                    {{$recentExpens->amount}}<br>
-                  <label>Yer: </label>
-                    {{$recentExpens->location}}<br>
-                  <label>Kategori: </label>
-                    @foreach ($categories as $category)
-                      @if ($category->id == $recentExpens->category_id)
-                        <span>{{$category->name}}</span><br>
-                      @endif
-                    @endforeach
-                  <label>Tarih: </label>
-                    {{$recentExpens->date}}
-              </div>
-          </div>
+                {{$mostExpense->totalExpense}}
+            </div>
         </div>
       </div>
     </div>
+  </div>
+@endif
+
+<br>
+@if($leastExpense)
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-md-offset-0">
+        <div class="panel panel-default">
+          <div class="panel-body"><strong><p align="center">En az harcama yapılan ay</p></strong></div>
+            <div align="center">
+                <label>Ay: </label>
+                  {{Carbon\Carbon::createFromFormat('m',$leastExpense->expenseMonth)->format('F')}}<br>
+                <label>Miktar: </label>
+                  {{$leastExpense->totalExpense}}
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+@endif
+<br>
+@if($recentExpens)
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-md-offset-0">
+        <div class="panel panel-default">
+          <div class="panel-body"><strong><p align="center">Son yapılan harcama</p></strong></div>
+            <div align="center">
+                <label>Miktar: </label>
+                  {{$recentExpens->amount}}<br>
+                <label>Yer: </label>
+                  {{$recentExpens->location}}<br>
+                <label>Kategori: </label>
+                  @foreach ($categories as $category)
+                    @if ($category->id == $recentExpens->category_id)
+                      <span>{{$category->name}}</span><br>
+                    @endif
+                  @endforeach
+                <label>Tarih: </label>
+                  {{$recentExpens->date}}
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+@endif
 
 <br>
 
