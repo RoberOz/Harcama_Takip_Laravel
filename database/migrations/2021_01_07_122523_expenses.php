@@ -15,13 +15,13 @@ class Expenses extends Migration
     {
         Schema::create('expenses', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('categories_id')->unsigned();
+            $table->integer('category_id');
             $table->integer('amount');
             $table->date('date');
             $table->string('location', 70);
             $table->timestamps();
 
-            $table->foreign('categories_id')
+            $table->foreign('category_id')
                 ->references('id')
                 ->on('categories');
         });
@@ -34,5 +34,6 @@ class Expenses extends Migration
      */
     public function down()
     {
+      Schema::drop('expenses');
     }
 }

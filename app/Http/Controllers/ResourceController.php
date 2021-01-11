@@ -33,14 +33,14 @@ class ResourceController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-        'amount' => 'required|numeric',
-        'categories_id' => 'required|numeric',
+        'amount' => 'required|integer',
+        'category_id' => 'required|numeric|exists:categories,id',
         'location' => 'required|max:70',
         'date' => 'required|date',
       ]);
 
         $expense = new Expense();
-        $expense->categories_id = $request->categories_id;
+        $expense->category_id = $request->category_id;
         $expense->amount = $request->amount;
         $expense->location = $request->location;
         $expense->date = $request->date;
