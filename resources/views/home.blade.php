@@ -101,7 +101,7 @@
           <tr height="35">
             <td align="right"><label>Tarih: </label></td>
             <td >
-              <input type="date" name="date" value="{{old('location')}}" min="2020-01-01" required></input>
+              <input type="date" name="date" value="{{old('date')}}" min="2020-01-01" required></input>
             </td>
           </tr>
           <tr height="35">
