@@ -119,7 +119,7 @@
       <div class="panel panel-default">
         <div class="panel-body"><strong><p align="center">En çok harcama yapılan ay</p></strong></div>
           <div align="center">
-              <label>Ay: </label>
+            <label>Ay: </label>
               @if ($most_expense['0']->expense_month == 1)
                 Ocak
               @elseif ($most_expense['0']->expense_month == 2)
@@ -145,8 +145,8 @@
               @elseif ($most_expense['0']->expense_month == 12)
                 Aralık
               @endif<br>
-              <label>Miktar: </label>
-                {{$most_expense['0']->total_expense}}
+            <label>Miktar: </label>
+              {{$most_expense['0']->total_expense}}
           </div>
       </div>
     </div>

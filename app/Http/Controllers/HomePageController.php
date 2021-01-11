@@ -16,20 +16,20 @@ class HomePageController extends Controller
       $categories=Category::all();
       $expenses=Expense::all();
 
-      $most_expense=DB::table('expenses')
+      $most_expense=Expense::select(DB::raw('MONTH(date) AS expense_month'), DB::raw('SUM(amount) AS total_expense'))
               ->whereYear('date','2020')
               ->groupBy(DB::raw("MONTH(date)"))
               ->orderBy('total_expense','DESC')
               ->take(1)
-              ->get([DB::raw('MONTH(date) AS expense_month'), DB::raw('SUM(amount) AS total_expense')]);
+              ->get();
 
 
-      $least_expense=DB::table('expenses')
+      $least_expense=Expense::select(DB::raw('MONTH(date) AS expense_month'), DB::raw('SUM(amount) AS total_expense'))
               ->whereYear('date','2020')
               ->groupBy(DB::raw("MONTH(date)"))
               ->orderBy('total_expense','ASC')
               ->take(1)
-              ->get([DB::raw('MONTH(date) AS expense_month'), DB::raw('SUM(amount) AS total_expense')]);
+              ->get();
 
       $recent_expens=DB::table('expenses')
               ->orderBy('date','DESC')
