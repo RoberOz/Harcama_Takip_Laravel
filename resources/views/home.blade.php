@@ -120,7 +120,7 @@
           <div class="panel-body"><strong><p align="center">En çok harcama yapılan ay</p></strong></div>
             <div align="center">
               <label>Ay: </label>
-                {{Carbon\Carbon::createFromFormat('m',$mostExpense->expenseMonth)->format('F')}}<br>
+                {{Carbon\Carbon::createFromFormat('m',$mostExpense->expenseMonth)->formatLocalized('%B')}}<br>
               <label>Miktar: </label>
                 {{$mostExpense->totalExpense}}
             </div>
@@ -139,7 +139,7 @@
           <div class="panel-body"><strong><p align="center">En az harcama yapılan ay</p></strong></div>
             <div align="center">
                 <label>Ay: </label>
-                  {{Carbon\Carbon::createFromFormat('m',$leastExpense->expenseMonth)->format('F')}}<br>
+                  {{Carbon\Carbon::createFromFormat('m',$leastExpense->expenseMonth)->formatLocalized('%B')}}<br>
                 <label>Miktar: </label>
                   {{$leastExpense->totalExpense}}
             </div>
