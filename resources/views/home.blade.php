@@ -159,7 +159,7 @@
   <div class="row">
     <div class="col-md-12 col-md-offset-0">
       <div class="panel panel-default">
-        <div class="panel-body"><strong><p align="center">En çok harcama yapılan ay</p></strong></div>
+        <div class="panel-body"><strong><p align="center">En az harcama yapılan ay</p></strong></div>
           <div align="center">
               <label>Ay: </label>
               @if ($leastExpense['0']->expenseMonth == 1)
@@ -204,21 +204,21 @@
             <div class="panel-body"><strong><p align="center">Son yapılan harcama</p></strong></div>
               <div align="center">
                   <label>Miktar: </label>
-                    {{$recentExpens->amount}}<br>
+                    {{$recentExpens['0']->amount}}<br>
                   <label>Yer: </label>
-                    {{$recentExpens->location}}<br>
+                    {{$recentExpens['0']->location}}<br>
                   <label>Kategori: </label>
-                    @if ($recentExpens->categories_id == 1)
+                    @if ($recentExpens['0']->categories_id == 1)
                       <span>Fatura</span><br>
-                    @elseif ($recentExpens->categories_id == 2)
+                    @elseif ($recentExpens['0']->categories_id == 2)
                       <span>Borç</span><br>
-                    @elseif ($recentExpens->categories_id == 3)
+                    @elseif ($recentExpens['0']->categories_id == 3)
                       <span>Vergi</span><br>
                     @else
                       <span>Kategori gösteriminde bir hata oluştu!</span><br>
                     @endif
                   <label>Tarih: </label>
-                    {{$recentExpens->date}}
+                    {{$recentExpens['0']->date}}
               </div>
           </div>
         </div>

@@ -14,7 +14,6 @@ class HomePageController extends Controller
   public function index()
     {
       $categories=Category::all();
-      $expenses=Expense::all();
 
       $mostExpense=Expense::select(DB::raw('MONTH(date) AS expenseMonth'), DB::raw('SUM(amount) AS totalExpense'))
               ->whereYear('date',Carbon::now()->year)
@@ -23,7 +22,6 @@ class HomePageController extends Controller
               ->take(1)
               ->get();
 
-
       $leastExpense=Expense::select(DB::raw('MONTH(date) AS expenseMonth'), DB::raw('SUM(amount) AS totalExpense'))
               ->whereYear('date',Carbon::now()->year)
               ->groupBy(DB::raw("MONTH(date)"))
@@ -31,17 +29,17 @@ class HomePageController extends Controller
               ->take(1)
               ->get();
 
-      $recentExpens=DB::table('expenses')
+      $recentExpens=Expense::select()
               ->orderBy('date','DESC')
-              ->latest()
-              ->first();
+              ->take(1)
+              ->get();
 
-      $thisMonthExpenses=DB::table('expenses')
+      $thisMonthExpenses=Expense::select()
                ->whereYear('date',Carbon::now()->year)
                ->whereMonth('date', Carbon::now()->month)
                ->get();
 
 
-      return view('home')->with(compact('categories','expenses','mostExpense','leastExpense','thisMonthExpenses','recentExpens'));
+      return view('home')->with(compact('categories','mostExpense','leastExpense','thisMonthExpenses','recentExpens'));
     }
 }
