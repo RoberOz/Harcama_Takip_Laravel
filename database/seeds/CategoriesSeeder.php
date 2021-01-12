@@ -13,10 +13,10 @@ class CategoriesSeeder extends Seeder
     public function run()
     {
       $categorySeed=[
-        ['id'=>1, 'name'=>'Fatura'],
-        ['id'=>2, 'name'=>'Borç'],
-        ['id'=>3, 'name'=>'Vergi'],
+        ['name'=>'Fatura'],
+        ['name'=>'Borç'],
+        ['name'=>'Vergi'],
       ];
-      Category::insert($categorySeed);
+      Category::create($categorySeed);
     }
 }
