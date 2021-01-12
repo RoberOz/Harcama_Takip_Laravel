@@ -161,11 +161,7 @@
                 <label>Yer: </label>
                   {{$recentExpens->location}}<br>
                 <label>Kategori: </label>
-                  @foreach ($categories as $category)
-                    @if ($category->id == $recentExpens->category_id)
-                      <span>{{$category->name}}</span><br>
-                    @endif
-                  @endforeach
+                  {{$recentExpens->category->name}}<br>
                 <label>Tarih: </label>
                   {{$recentExpens->date}}
             </div>
@@ -194,11 +190,7 @@
                       <td align="center">{{$currentMonthExpens->amount}}</td>
                       <td align="center">{{$currentMonthExpens->location}}</td>
                       <td align="center">
-                        @foreach ($categories as $category)
-                          @if ($category->id == $recentExpens->category_id)
-                            <span>{{$category->name}}</span><br>
-                          @endif
-                        @endforeach
+                        {{$currentMonthExpens->category->name}}
                       </td>
                       <td align="center"height = 35>{{$currentMonthExpens->date}}</td>
                     </tr>
@@ -208,7 +200,5 @@
         </div>
       </div>
     </div>
-
-
     </body>
 </html>
