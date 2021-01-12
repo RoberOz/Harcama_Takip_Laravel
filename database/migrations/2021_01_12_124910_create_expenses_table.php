@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Expenses extends Migration
+class CreateExpensesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,7 @@ class Expenses extends Migration
     {
         Schema::create('expenses', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('category_id');
+            $table->bigInteger('category_id');
             $table->integer('amount');
             $table->date('date');
             $table->string('location', 70);
