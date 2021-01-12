@@ -17,6 +17,10 @@ class CategoriesSeeder extends Seeder
         ['name'=>'Borç'],
         ['name'=>'Vergi'],
       ];
-      Category::create($categorySeed);
+
+      foreach ($categorySeed as $seed) {
+        Category::create($seed);
+      }
+
     }
 }
