@@ -33,7 +33,7 @@ class ResourceController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-        'amount' => 'required|integer',
+        'amount' => 'required|numeric',
         'category_id' => 'required|numeric|exists:categories,id',
         'location' => 'required|max:70',
         'date' => 'required|date',
