@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\Category;
+use Illuminate\Database\Seeder;
 
 class CategoriesSeeder extends Seeder
 {
@@ -12,15 +12,14 @@ class CategoriesSeeder extends Seeder
      */
     public function run()
     {
-      $categorySeed=[
-        ['name'=>'Fatura'],
-        ['name'=>'Borç'],
-        ['name'=>'Vergi'],
+        $categorySeed = [
+        ['name' => 'Fatura'],
+        ['name' => 'Borç'],
+        ['name' => 'Vergi'],
       ];
 
-      foreach ($categorySeed as $seed) {
-        Category::create($seed);
-      }
-
+        foreach ($categorySeed as $seed) {
+            Category::create($seed);
+        }
     }
 }

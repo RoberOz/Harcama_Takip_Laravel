@@ -242,7 +242,7 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-md-12 col-md-offset-0">
+        <div class="col-md-12 col-md-offset-2">
           <div class="panel panel-default">
             <div class="panel-body"><strong><p align="center">Bu ay yapılan harcamalar</p></strong></div>
               <table width=100%>
@@ -270,7 +270,7 @@
 
 <br>
 
-  <div class="col-md-5 col-md-offset-1">
+  <div class="col-md-10 col-md-offset-1" align="center">
     <div class="panel panel-default">
       <div class="panel-body">
         <strong><p align="center">Kategorilere göre harcama yerleri</strong></p>

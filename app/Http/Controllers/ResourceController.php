@@ -34,7 +34,7 @@ class ResourceController extends Controller
     {
         $this->validate($request, [
         'amount' => 'required|numeric',
-        'category_id' => 'required|numeric|exists:categories,id',
+        'category_id' => 'required|integer|exists:categories,id',
         'location' => 'required|max:70',
         'date' => 'required|date',
       ]);

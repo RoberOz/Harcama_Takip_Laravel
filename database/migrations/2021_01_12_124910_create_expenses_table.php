@@ -34,6 +34,6 @@ class CreateExpensesTable extends Migration
      */
     public function down()
     {
-      Schema::drop('expenses');
+        Schema::drop('expenses');
     }
 }
