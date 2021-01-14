@@ -14,7 +14,9 @@ class HomePageController extends Controller
     public function index()
     {
         $categories = Category::all();
-        $expenses = Expense::orderby('date')->Paginate(10);
+        $expenses = Expense::all();
+
+        $expensePages = Expense::orderby('date', 'DESC')->Paginate(10);
 
         $mostExpense = Expense::select(\DB::raw('MONTH(date) AS expenseMonth'), \DB::raw('SUM(amount) AS totalExpense'))
               ->whereYear('date', Carbon::now()->year)
@@ -35,16 +37,28 @@ class HomePageController extends Controller
                ->whereMonth('date', Carbon::now()->month)
                ->get();
 
+
         $start = (new DateTime(Expense::orderBy('date', 'ASC')->first()->date))->modify('first day of this month');
         $end = (new DateTime($recentExpens->date))->modify('first day of next year');
         $intervalYears = DateInterval::createFromDateString('1 year');
 
         $years = new DatePeriod($start, $intervalYears, $end);
 
+
         $listDatas=Expense::select(\DB::raw('YEAR(date) year, MONTH(date) month'), \DB::raw('SUM(amount) AS totalExpense'),\DB::raw('COUNT(*) as times'))
                ->groupby('year','month')
                ->orderBy('year')
                ->get();
+
+       $totalExpenseYearly=Expense::select(\DB::raw('YEAR(date) year'), \DB::raw('SUM(amount) AS totalExpense'))
+              ->groupby('year')
+              ->orderBy('year')
+              ->get();
+
+       $expenseLocationCounts=Expense::select(\DB::raw('COUNT(*) as times'),\DB::raw('location'),\DB::raw('YEAR(date) year'))
+              ->groupBy('year','location')
+              ->get();
+
 
 
 
@@ -53,12 +67,15 @@ class HomePageController extends Controller
         return view('home')->with(compact(
           'categories',
           'expenses',
+          'expensePages',
           'mostExpense',
           'leastExpense',
           'currentMonthExpenses',
           'recentExpens',
           'years',
-          'listDatas'
+          'listDatas',
+          'totalExpenseYearly',
+          'expenseLocationCounts'
         ));
     }
 }

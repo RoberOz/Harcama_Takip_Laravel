@@ -180,6 +180,16 @@
                 @foreach ($years as $year)
                   <div class="col-1 col-sm-3"><strong>{{$year->format("Y")}}</strong>
                     <br>
+                    <strong>
+                      Senelik Toplam Harcama:
+                      @foreach ($totalExpenseYearly as $totalExpenseYear)
+                        @if ($totalExpenseYear->year == $year->format("Y"))
+                          {{$totalExpenseYear->totalExpense}}
+                        @endif
+                      @endforeach
+                    </strong>
+                    <br>
+                    <br>
                     @foreach ($listDatas as $listData)
                       @if ($listData->year == $year->format("Y"))
                         Ay:
@@ -202,6 +212,37 @@
   </div>
 
 <br>
+
+  <div class="col-md-5 col-md-offset-1">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <strong><p align="center">Harcama Yerleri Tekrarı</strong></p>
+          <div class="container">
+            <div class="row">
+              @foreach ($years as $year)
+                <div class="col-sm-2"><strong>{{$year->format("Y")}}</strong>
+                  <br>
+                  @foreach ($expenseLocationCounts as $expenseLocationCount)
+                    @if ($expenseLocationCount->year == $year->format("Y"))
+                      {{($expenseLocationCount->location)}}
+                      -
+                      {{($expenseLocationCount->times)}}
+                      <br>
+                    @endif
+                  @endforeach
+                </div>
+              @endforeach
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+<br>
+
+
+
+
 
     <div class="container">
       <div class="row">
@@ -233,6 +274,38 @@
 
 <br>
 
+  <div class="col-md-5 col-md-offset-1">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <strong><p align="center">Harcama Yerleri Tekrarı</strong></p>
+          <div class="container">
+            <div class="row">
+              @foreach ($categories as $category)
+                <div class="col-1 col-sm-3"><strong>-{{$category->name}}-</strong>
+
+                </div>
+              @endforeach
+
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
     <div class="container">
       <div class="row">
         <div class="col-md-12 col-md-offset-0">
@@ -245,18 +318,18 @@
                   <td align="center"><strong>-Kategori-</strong></td>
                   <td align="center"><strong>-Tarih-</strong></td>
                 </tr>
-                @foreach ($expenses as $expense)
+                @foreach ($expensePages as $expensePage)
                   <tr height="50">
-                    <td align="center">{{$expense->amount}}</td>
-                    <td align="center">{{$expense->location}}</td>
+                    <td align="center">{{$expensePage->amount}}</td>
+                    <td align="center">{{$expensePage->location}}</td>
                     <td align="center">
-                      {{$expense->category->name}}
+                      {{$expensePage->category->name}}
                     </td>
-                    <td align="center"height = 35>{{$expense->date}}</td>
+                    <td align="center"height = 35>{{$expensePage->date}}</td>
                   </tr>
                 @endforeach
               </table>
-                <div align='center'>{{$expenses->links()}}</div>
+                <div align='center'>{{$expensePages->links()}}</div>
           </div>
         </div>
       </div>
