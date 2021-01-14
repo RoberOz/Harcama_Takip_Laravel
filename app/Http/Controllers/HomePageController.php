@@ -50,14 +50,18 @@ class HomePageController extends Controller
                ->orderBy('year')
                ->get();
 
-       $totalExpenseYearly=Expense::select(\DB::raw('YEAR(date) year'), \DB::raw('SUM(amount) AS totalExpense'))
-              ->groupby('year')
-              ->orderBy('year')
-              ->get();
+        $totalExpenseYearly=Expense::select(\DB::raw('YEAR(date) year'), \DB::raw('SUM(amount) AS totalExpense'))
+               ->groupby('year')
+               ->orderBy('year')
+               ->get();
 
-       $expenseLocationCounts=Expense::select(\DB::raw('COUNT(*) as times'),\DB::raw('location'),\DB::raw('YEAR(date) year'))
-              ->groupBy('year','location')
-              ->get();
+        $expenseLocationCounts=Expense::select(\DB::raw('COUNT(*) as times'),\DB::raw('location'),\DB::raw('YEAR(date) year'))
+               ->groupBy('year','location')
+               ->get();
+
+        $categoryLocations=Expense::select(\DB::raw('location'),\DB::raw('category_id'))
+               ->groupBy('category_id','location')
+               ->get();
 
 
 
@@ -75,7 +79,8 @@ class HomePageController extends Controller
           'years',
           'listDatas',
           'totalExpenseYearly',
-          'expenseLocationCounts'
+          'expenseLocationCounts',
+          'categoryLocations'
         ));
     }
 }

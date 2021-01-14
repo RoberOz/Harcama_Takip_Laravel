@@ -240,10 +240,6 @@
 
 <br>
 
-
-
-
-
     <div class="container">
       <div class="row">
         <div class="col-md-12 col-md-offset-0">
@@ -277,15 +273,19 @@
   <div class="col-md-5 col-md-offset-1">
     <div class="panel panel-default">
       <div class="panel-body">
-        <strong><p align="center">Harcama Yerleri Tekrarı</strong></p>
+        <strong><p align="center">Kategorilere göre harcama yerleri</strong></p>
           <div class="container">
             <div class="row">
               @foreach ($categories as $category)
                 <div class="col-1 col-sm-3"><strong>-{{$category->name}}-</strong>
-
+                  @foreach ($categoryLocations as $categoryLocation)
+                    @if ($categoryLocation->category_id == $category->id)
+                      <br>
+                      {{($categoryLocation->location)}}
+                    @endif
+                  @endforeach
                 </div>
               @endforeach
-
             </div>
           </div>
       </div>
@@ -293,18 +293,6 @@
   </div>
 
 <br>
-
-
-
-
-
-
-
-
-
-
-
-
 
     <div class="container">
       <div class="row">
