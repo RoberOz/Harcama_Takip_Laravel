@@ -47,7 +47,7 @@ class ResourceController extends Controller
 
         $expense->save();
 
-        return redirect('/');
+        return response()->json(['data' => $expense], 201);
     }
 
     /**

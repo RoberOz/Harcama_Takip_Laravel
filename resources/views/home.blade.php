@@ -4,109 +4,24 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>Harcama Takip</title>
 
-        <!-- Fonts -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
     </head>
     <body>
+      <div id="app">
 
-      <div style="background-color:lightblue">
-          @foreach ($errors->all() as $error)
-            <li>{{$error}}</li>
-          @endforeach
+        <expense-create
+          :categories="{{$categories}}"
+        ></expense-create>
+        
       </div>
 
-      <form method="post" action="{{url('/process')}}">
-        <table align="center">
-          {{ csrf_field() }}
-          <tr height="35">
-            <td align="right" width = "140"><label>Harcanan Miktar: </label></td>
-            <td ><input type="text" name="amount" value="{{old('amount')}}" required></input></td>
-          </tr>
-          <tr height="35">
-            <td align="right"><label>Harcanan Yer: </label></td>
-            <td ><input type="text" name="location" value="{{old('location')}}" required></input></td>
-          </tr>
-          <tr height="35">
-            <td align="right"><label>Bir Kategori Seçin: </label></td>
-            <td >
-              <select name="category_id">
-                <option value="" required>Seçim Yapınız</option>
-                @foreach ($categories as $category)
-                  <option value="{{$category->id}}" {{ old('category_id') == $category->id ? 'selected' : '' }}>{{$category->name}}</option>
-                @endforeach
-              </select>
-            </td>
-          </tr>
-          <tr height="35">
-            <td align="right"><label>Tarih: </label></td>
-            <td >
-              <input type="date" name="date" value="{{old('date')}}" min="2018-01-01" required></input>
-            </td>
-          </tr>
-          <tr height="35">
-            <td  align="center" colspan="2"><button type="submit">Oluştur</button></td>
-          </tr>
-        </table>
-      </form>
 
 <br>
 <br>
@@ -323,6 +238,7 @@
       </div>
     </div>
 
+    <script src="{{asset('js/app.js')}}"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 

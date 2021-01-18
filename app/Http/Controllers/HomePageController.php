@@ -69,7 +69,6 @@ class HomePageController extends Controller
 
 
 
-
         return view('home')->with(compact(
             'categories',
             'expenses',
