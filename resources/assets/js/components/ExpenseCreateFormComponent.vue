@@ -1,7 +1,6 @@
 <template>
   <div>
     <form v-on:submit.prevent="submitForm">
-      <div class="alert alert-success" v-show="success">Post başarıyla gönderildi</div>
       <table align="center">
         <tr height="35">
           <td align="right" width = "140" ><label>Harcanan Miktar: </label></td>
@@ -36,7 +35,6 @@
   </div>
 </template>
 
-import axios from 'axios';
 
 <script>
   export default {
@@ -51,15 +49,15 @@ import axios from 'axios';
           category_id:'',
           date:'',
         },
-        success: false
       }
     },
     methods:{
       submitForm(){
-        axios.post('/api/store',this.fields)
+        this.axios.post('/api/store',this.fields)
              .then((response) => {
                this.fields = {};
-               this.success = true;
+               alert('Veri başarıyla oluşturuldu');
+               success: location.reload()
              })
              .catch((error) => {
                console.log('Error');

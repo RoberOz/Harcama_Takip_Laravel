@@ -22,7 +22,9 @@ class HomePageController extends Controller
         $categories = Category::all();
         $expenses = Expense::all();
 
-        $expensePages = Expense::orderby('date', 'DESC')->paginate(10);
+        $expensePages = Expense::with('Category')
+              ->orderby('date', 'DESC')
+              ->paginate(10);
 
         $mostExpense = Expense::select(\DB::raw('MONTH(date) AS expenseMonth'), \DB::raw('SUM(amount) AS totalExpense'))
               ->whereYear('date', Carbon::now()->year)
@@ -36,15 +38,17 @@ class HomePageController extends Controller
               ->orderBy('totalExpense', 'ASC')
               ->first();
 
-        $recentExpens = Expense::orderBy('date', 'DESC')
+        $recentExpense = Expense::with('Category')
+              ->orderBy('date', 'DESC')
               ->first();
 
-        $currentMonthExpenses = Expense::whereYear('date', Carbon::now()->year)
+        $currentMonthExpenses = Expense::with('Category')
+               ->whereYear('date', Carbon::now()->year)
                ->whereMonth('date', Carbon::now()->month)
                ->get();
 
         $start = (new DateTime(Expense::orderBy('date', 'ASC')->first()->date))->modify('first day of this month');
-        $end = (new DateTime($recentExpens->date))->modify('first day of next year');
+        $end = (new DateTime($recentExpense->date))->modify('first day of next year');
         $intervalYears = DateInterval::createFromDateString('1 year');
 
         $years = new DatePeriod($start, $intervalYears, $end);
@@ -76,7 +80,7 @@ class HomePageController extends Controller
             'mostExpense',
             'leastExpense',
             'currentMonthExpenses',
-            'recentExpens',
+            'recentExpense',
             'years',
             'listDatas',
             'totalExpenseYearly',
@@ -118,8 +122,9 @@ class HomePageController extends Controller
 
     public function recentExpens()
     {
-      return Expense::orderBy('date', 'DESC')
-                ->first();
+      return Expense::with('Category')
+            ->orderBy('date', 'DESC')
+            ->first();
     }
 /*
     public function years()
