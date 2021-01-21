@@ -22,9 +22,17 @@ class HomePageController extends Controller
         $categories = Category::all();
         $expenses = Expense::all();
 
-        $expensePages = Expense::with('Category')
+        $expensePagination = Expense::with('Category')
               ->orderby('date', 'DESC')
               ->paginate(10);
+        foreach ($expensePagination as $expensePaginate) {
+          $expensePages[] = [
+            'amount' => $expensePaginate->amount,
+            'location' => $expensePaginate->location,
+            'date' => $expensePaginate->date,
+            'category_name' => $expensePaginate->category->name,
+          ];
+        }
 
         $mostExpense = Expense::select(\DB::raw('MONTH(date) AS expenseMonth'), \DB::raw('SUM(amount) AS totalExpense'))
               ->whereYear('date', Carbon::now()->year)
@@ -48,10 +56,13 @@ class HomePageController extends Controller
                ->get();
 
         $start = (new DateTime(Expense::orderBy('date', 'ASC')->first()->date))->modify('first day of this month');
-        $end = (new DateTime($recentExpense->date))->modify('first day of next year');
+        $end = (new DateTime($recentExpense->date))->modify('last day of this year');
         $intervalYears = DateInterval::createFromDateString('1 year');
 
-        $years = new DatePeriod($start, $intervalYears, $end);
+        $yearsUnorganized = new DatePeriod($start, $intervalYears, $end);
+        foreach ($yearsUnorganized as $yearUnorganized) {
+          $years[] = ['value' => $yearUnorganized->format('Y')];
+        }
 
         $listDatas = Expense::select(\DB::raw('YEAR(date) year, MONTH(date) month'), \DB::raw('SUM(amount) AS totalExpense'), \DB::raw('COUNT(*) as times'))
                ->groupby('year', 'month')
@@ -86,6 +97,7 @@ class HomePageController extends Controller
             'totalExpenseYearly',
             'expenseLocationCounts',
             'categoryLocations',
+            'expensePagination'
         ));
 
     }

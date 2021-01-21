@@ -66763,8 +66763,6 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_moment__);
 //
 //
 //
@@ -66806,19 +66804,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['years', 'totalExpenseYearly', 'listDatas'],
-  methods: {
-    format_date: function format_date(value) {
-      if (value) {
-        return __WEBPACK_IMPORTED_MODULE_0_moment___default()(String(value)).format('YYYY');
-      }
-    }
-  }
+  props: ['years', 'totalExpenseYearly', 'listDatas']
 });
 
 /***/ }),
@@ -66829,92 +66817,92 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { attrs: { align: "center" } }, [
-    _c("div", { staticClass: "col-md-10 col-md-offset-1" }, [
-      _c("div", { staticClass: "panel panel-default" }, [
-        _c("div", { staticClass: "panel-body" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c("div", { staticClass: "container" }, [
-            _c(
-              "div",
-              { staticClass: "row" },
-              _vm._l(_vm.years, function(year) {
-                return _c("div", [
-                  _c(
-                    "div",
-                    { staticClass: "col-1 col-sm-3" },
-                    [
-                      _c("strong", [_vm._v(_vm._s(_vm.format_date(year)))]),
-                      _vm._v(" "),
-                      _c("br"),
-                      _vm._v(" "),
-                      _c(
-                        "strong",
-                        [
-                          _vm._v(
-                            "\n                    Senelik Toplam Harcama:\n                    "
-                          ),
-                          _vm._l(_vm.totalExpenseYearly, function(
-                            totalExpenseYear
-                          ) {
-                            return _c("div", [
-                              totalExpenseYear.year == _vm.format_date(year)
-                                ? _c("div", [
-                                    _vm._v(
-                                      "\n                        " +
-                                        _vm._s(
-                                          _vm.$totalExpenseYear.totalExpense
-                                        ) +
-                                        "\n                      "
-                                    )
-                                  ])
-                                : _vm._e()
+  return _c("div", { staticClass: "col" }, [
+    _c("div", { staticClass: "panel panel-default" }, [
+      _c("div", { staticClass: "panel-body" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "container" }, [
+          _c(
+            "div",
+            { staticClass: "row" },
+            _vm._l(_vm.years, function(year) {
+              return _c("div", [
+                _c(
+                  "div",
+                  {
+                    staticClass: "col-15 col-sm-15",
+                    staticStyle: { width: "285px" },
+                    attrs: { align: "center" }
+                  },
+                  [
+                    _c("strong", [_vm._v(_vm._s(year.value))]),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c(
+                      "strong",
+                      [
+                        _vm._v(
+                          "\n                  Senelik Toplam Harcama:\n                  "
+                        ),
+                        _vm._l(_vm.totalExpenseYearly, function(
+                          totalExpenseYear
+                        ) {
+                          return _c("div", [
+                            totalExpenseYear.year == year.value
+                              ? _c("div", [
+                                  _vm._v(
+                                    "\n                      " +
+                                      _vm._s(totalExpenseYear.totalExpense) +
+                                      "\n                    "
+                                  )
+                                ])
+                              : _vm._e()
+                          ])
+                        })
+                      ],
+                      2
+                    ),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm._v(" "),
+                    _vm._l(_vm.listDatas, function(listData) {
+                      return _c("div", [
+                        listData.year == year.value
+                          ? _c("div", [
+                              _vm._v(
+                                "\n                    Ay:\n                      " +
+                                  _vm._s(listData.month)
+                              ),
+                              _c("br"),
+                              _vm._v(
+                                "\n                    Toplam harcama miktar:\n                      " +
+                                  _vm._s(listData.totalExpense)
+                              ),
+                              _c("br"),
+                              _vm._v(
+                                "\n                    Toplam harcama sayısı:\n                      " +
+                                  _vm._s(listData.times)
+                              ),
+                              _c("br"),
+                              _vm._v(" "),
+                              _c("br")
                             ])
-                          })
-                        ],
-                        2
-                      ),
-                      _vm._v(" "),
-                      _c("br"),
-                      _vm._v(" "),
-                      _c("br"),
-                      _vm._v(" "),
-                      _vm._l(_vm.listDatas, function(listData) {
-                        return _c("div", [
-                          listData.year == _vm.format_date(year)
-                            ? _c("div", [
-                                _vm._v(
-                                  "\n                      Ay:\n                        " +
-                                    _vm._s(listData.month)
-                                ),
-                                _c("br"),
-                                _vm._v(
-                                  "\n                      Toplam harcama miktar:\n                        " +
-                                    _vm._s(_vm.$listData.totalExpense)
-                                ),
-                                _c("br"),
-                                _vm._v(
-                                  "\n                      Toplam harcama sayısı:\n                        " +
-                                    _vm._s(_vm.$listData.times)
-                                ),
-                                _c("br"),
-                                _vm._v(" "),
-                                _c("br")
-                              ])
-                            : _vm._e()
-                        ])
-                      }),
-                      _vm._v(" "),
-                      _c("br")
-                    ],
-                    2
-                  )
-                ])
-              }),
-              0
-            )
-          ])
+                          : _vm._e()
+                      ])
+                    }),
+                    _vm._v(" "),
+                    _c("br")
+                  ],
+                  2
+                )
+              ])
+            }),
+            0
+          )
         ])
       ])
     ])
@@ -66992,8 +66980,6 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_moment__);
 //
 //
 //
@@ -67021,17 +67007,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['years', 'expenseLocationCounts'],
-  methods: {
-    format_date: function format_date(value) {
-      if (value) {
-        return __WEBPACK_IMPORTED_MODULE_0_moment___default()(String(value)).format('YYYY');
-      }
-    }
-  }
+  props: ['years', 'expenseLocationCounts']
 });
 
 /***/ }),
@@ -67042,7 +67020,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "col-md-5 col-md-offset-1" }, [
+  return _c("div", { staticClass: "col", staticStyle: { width: "530px" } }, [
     _c("div", { staticClass: "panel panel-default" }, [
       _c("div", { staticClass: "panel-body" }, [
         _vm._m(0),
@@ -67050,14 +67028,18 @@ var render = function() {
         _c("div", { staticClass: "container" }, [
           _c(
             "div",
-            { staticClass: "row" },
+            { staticClass: "row", staticStyle: { width: "475px" } },
             _vm._l(_vm.years, function(year) {
               return _c("div", [
                 _c(
                   "div",
-                  { staticClass: "col-sm-2" },
+                  {
+                    staticClass: "col-15 col-sm-15",
+                    staticStyle: { width: "105px" },
+                    attrs: { align: "center" }
+                  },
                   [
-                    _c("strong", [_vm._v(_vm._s(_vm.format_date(year)))]),
+                    _c("strong", [_vm._v(_vm._s(year.value))]),
                     _vm._v(" "),
                     _c("br"),
                     _vm._v(" "),
@@ -67065,7 +67047,7 @@ var render = function() {
                       expenseLocationCount
                     ) {
                       return _c("div", [
-                        expenseLocationCount.year == _vm.format_date(year)
+                        expenseLocationCount.year == year.value
                           ? _c("div", [
                               _vm._v(
                                 "\n                    " +
@@ -67191,8 +67173,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['currentMonthExpenses']
@@ -67206,36 +67186,58 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12 col-md-offset-2" }, [
-        _c("div", { staticClass: "panel panel-default" }, [
-          _vm._m(0),
-          _vm._v(" "),
+  return _c(
+    "div",
+    { staticClass: "container", staticStyle: { width: "530px" } },
+    [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-12" }, [
           _c(
-            "table",
-            { attrs: { width: "100%" } },
+            "div",
+            { staticClass: "panel panel-default" },
             [
+              _vm._m(0),
+              _vm._v(" "),
               _vm._m(1),
               _vm._v(" "),
               _vm._l(_vm.currentMonthExpenses, function(currentMonthExpens) {
                 return _c("div", [
-                  _c("tr", { attrs: { height: "50" } }, [
-                    _c("td", { attrs: { align: "center" } }, [
-                      _vm._v(_vm._s(currentMonthExpens.amount))
-                    ]),
+                  _c("tr", { attrs: { height: "30" } }, [
+                    _c(
+                      "td",
+                      {
+                        staticStyle: { width: "150px" },
+                        attrs: { align: "center" }
+                      },
+                      [_vm._v(_vm._s(currentMonthExpens.amount))]
+                    ),
                     _vm._v(" "),
-                    _c("td", { attrs: { align: "center" } }, [
-                      _vm._v(_vm._s(currentMonthExpens.location))
-                    ]),
+                    _c(
+                      "td",
+                      {
+                        staticStyle: { width: "150px" },
+                        attrs: { align: "center" }
+                      },
+                      [_vm._v(_vm._s(currentMonthExpens.location))]
+                    ),
                     _vm._v(" "),
-                    _c("td", { attrs: { align: "center" } }, [
-                      _vm._v(_vm._s(currentMonthExpens.category.name))
-                    ]),
+                    _c(
+                      "td",
+                      {
+                        staticStyle: { width: "150px" },
+                        attrs: { align: "center" }
+                      },
+                      [_vm._v(_vm._s(currentMonthExpens.category.name))]
+                    ),
                     _vm._v(" "),
-                    _c("td", { attrs: { align: "center", height: "35" } }, [
-                      _vm._v(_vm._s(currentMonthExpens.date))
-                    ])
+                    _c(
+                      "td",
+                      {
+                        staticStyle: { width: "150px" },
+                        attrs: { align: "center" }
+                      },
+                      [_vm._v(_vm._s(currentMonthExpens.date))]
+                    )
                   ])
                 ])
               })
@@ -67244,8 +67246,8 @@ var render = function() {
           )
         ])
       ])
-    ])
-  ])
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
@@ -67265,21 +67267,29 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("tr", { attrs: { height: "10" } }, [
-      _c("td", { attrs: { align: "center" } }, [
-        _c("strong", [_vm._v("-Miktar-")])
-      ]),
+      _c(
+        "td",
+        { staticStyle: { width: "150px" }, attrs: { align: "center" } },
+        [_c("strong", [_vm._v("-Miktar-")])]
+      ),
       _vm._v(" "),
-      _c("td", { attrs: { align: "center" } }, [
-        _c("strong", [_vm._v("-Yer-")])
-      ]),
+      _c(
+        "td",
+        { staticStyle: { width: "150px" }, attrs: { align: "center" } },
+        [_c("strong", [_vm._v("-Yer-")])]
+      ),
       _vm._v(" "),
-      _c("td", { attrs: { align: "center" } }, [
-        _c("strong", [_vm._v("-Kategori-")])
-      ]),
+      _c(
+        "td",
+        { staticStyle: { width: "150px" }, attrs: { align: "center" } },
+        [_c("strong", [_vm._v("-Kategori-")])]
+      ),
       _vm._v(" "),
-      _c("td", { attrs: { align: "center" } }, [
-        _c("strong", [_vm._v("-Tarih-")])
-      ])
+      _c(
+        "td",
+        { staticStyle: { width: "150px" }, attrs: { align: "center" } },
+        [_c("strong", [_vm._v("-Tarih-")])]
+      )
     ])
   }
 ]
@@ -67384,46 +67394,53 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "col-md-10 col-md-offset-1", attrs: { align: "center" } },
+    { staticClass: "col-md-5 col-md-offset-1", attrs: { align: "center" } },
     [
       _c("div", { staticClass: "panel panel-default" }, [
         _c("div", { staticClass: "panel-body" }, [
           _vm._m(0),
           _vm._v(" "),
-          _c("div", { staticClass: "container" }, [
-            _c(
-              "div",
-              { staticClass: "row" },
-              _vm._l(_vm.categories, function(category) {
-                return _c("div", [
-                  _c(
-                    "div",
-                    { staticClass: "col-1 col-sm-3" },
-                    [
-                      _c("strong", [_vm._v("-" + _vm._s(category.name) + "-")]),
-                      _vm._v(" "),
-                      _vm._l(_vm.categoryLocations, function(categoryLocation) {
-                        return _c("div", [
-                          categoryLocation.category_id == category.id
-                            ? _c("div", [
-                                _c("br"),
-                                _vm._v(
-                                  "\n                    " +
-                                    _vm._s(categoryLocation.location) +
-                                    "\n                  "
-                                )
-                              ])
-                            : _vm._e()
-                        ])
-                      })
-                    ],
-                    2
-                  )
-                ])
-              }),
-              0
-            )
-          ])
+          _c(
+            "div",
+            { staticClass: "container", staticStyle: { width: "510px" } },
+            [
+              _c(
+                "div",
+                { staticClass: "row" },
+                _vm._l(_vm.categories, function(category) {
+                  return _c("div", { staticClass: "col-4 col-sm-4" }, [
+                    _c(
+                      "div",
+                      [
+                        _c("strong", [
+                          _vm._v("-" + _vm._s(category.name) + "-")
+                        ]),
+                        _vm._v(" "),
+                        _vm._l(_vm.categoryLocations, function(
+                          categoryLocation
+                        ) {
+                          return _c("div", [
+                            categoryLocation.category_id == category.id
+                              ? _c("div", [
+                                  _c("br"),
+                                  _vm._v(
+                                    "\n                    " +
+                                      _vm._s(categoryLocation.location) +
+                                      "\n                  "
+                                  )
+                                ])
+                              : _vm._e()
+                          ])
+                        })
+                      ],
+                      2
+                    )
+                  ])
+                }),
+                0
+              )
+            ]
+          )
         ])
       ])
     ]
@@ -67530,11 +67547,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['expensePages']
+  props: ['expensePages', 'expensePagination']
 });
 
 /***/ }),
@@ -67548,44 +67563,60 @@ var render = function() {
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-md-12 col-md-offset-0" }, [
-        _c("div", { staticClass: "panel panel-default" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c(
-            "table",
-            { attrs: { width: "100%" } },
-            [
-              _vm._m(1),
-              _vm._v(" "),
-              _vm._l(_vm.expensePages, function(expensePage) {
-                return _c("div", [
-                  _c("tr", { attrs: { height: "50" } }, [
-                    _c("td", { attrs: { align: "center" } }, [
-                      _vm._v(_vm._s(expensePage.amount))
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { attrs: { align: "center" } }, [
-                      _vm._v(_vm._s(expensePage.location))
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { attrs: { align: "center" } }, [
-                      _vm._v(_vm._s(expensePage.category.name))
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { attrs: { align: "center", height: "35" } }, [
-                      _vm._v(_vm._s(expensePage.date))
-                    ])
-                  ])
+        _c(
+          "div",
+          { staticClass: "panel panel-default" },
+          [
+            _vm._m(0),
+            _vm._v(" "),
+            _vm._m(1),
+            _vm._v(" "),
+            _vm._l(_vm.expensePages, function(expensePage) {
+              return _c("div", [
+                _c("tr", { attrs: { height: "50" } }, [
+                  _c(
+                    "td",
+                    {
+                      staticStyle: { width: "150px" },
+                      attrs: { align: "center" }
+                    },
+                    [_vm._v(_vm._s(expensePage.amount))]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    {
+                      staticStyle: { width: "150px" },
+                      attrs: { align: "center" }
+                    },
+                    [_vm._v(_vm._s(expensePage.location))]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    {
+                      staticStyle: { width: "150px" },
+                      attrs: { align: "center" }
+                    },
+                    [_vm._v(_vm._s(expensePage.category_name))]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    {
+                      staticStyle: { width: "150px" },
+                      attrs: { align: "center" }
+                    },
+                    [_vm._v(_vm._s(expensePage.date))]
+                  )
                 ])
-              })
-            ],
-            2
-          ),
-          _vm._v(" "),
-          _c("div", { attrs: { align: "center" } }, [
-            _vm._v(_vm._s(_vm.expensePages.links()))
-          ])
-        ])
+              ])
+            }),
+            _vm._v(" "),
+            _c("div", { attrs: { align: "center" } }, [_vm._v("links")])
+          ],
+          2
+        )
       ])
     ])
   ])
@@ -67606,21 +67637,29 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("tr", { attrs: { height: "10" } }, [
-      _c("td", { attrs: { align: "center" } }, [
-        _c("strong", [_vm._v("-Miktar-")])
-      ]),
+      _c(
+        "td",
+        { staticStyle: { width: "150px" }, attrs: { align: "center" } },
+        [_c("strong", [_vm._v("-Miktar-")])]
+      ),
       _vm._v(" "),
-      _c("td", { attrs: { align: "center" } }, [
-        _c("strong", [_vm._v("-Yer-")])
-      ]),
+      _c(
+        "td",
+        { staticStyle: { width: "150px" }, attrs: { align: "center" } },
+        [_c("strong", [_vm._v("-Yer-")])]
+      ),
       _vm._v(" "),
-      _c("td", { attrs: { align: "center" } }, [
-        _c("strong", [_vm._v("-Kategori-")])
-      ]),
+      _c(
+        "td",
+        { staticStyle: { width: "150px" }, attrs: { align: "center" } },
+        [_c("strong", [_vm._v("-Kategori-")])]
+      ),
       _vm._v(" "),
-      _c("td", { attrs: { align: "center" } }, [
-        _c("strong", [_vm._v("-Tarih-")])
-      ])
+      _c(
+        "td",
+        { staticStyle: { width: "150px" }, attrs: { align: "center" } },
+        [_c("strong", [_vm._v("-Tarih-")])]
+      )
     ])
   }
 ]

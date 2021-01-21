@@ -1,15 +1,15 @@
 <template>
-  <div class="col-md-5 col-md-offset-1">
+  <div class="col" style="width:530px">
     <div class="panel panel-default">
       <div class="panel-body">
         <strong><p align="center">Harcama Yerleri Tekrarı</p></strong>
           <div class="container">
-            <div class="row">
+            <div class="row" style="width: 475px;">
               <div v-for="year in years">
-                <div class="col-sm-2"><strong>{{format_date(year)}}</strong>
+                <div class="col-15 col-sm-15" style="width:105px" align="center"><strong>{{year.value}}</strong>
                   <br>
                   <div v-for="expenseLocationCount in expenseLocationCounts">
-                    <div v-if="expenseLocationCount.year == format_date(year)">
+                    <div v-if="expenseLocationCount.year == year.value">
                       {{(expenseLocationCount.location)}}
                       -
                       {{(expenseLocationCount.times)}}
@@ -26,18 +26,10 @@
 </template>
 
 <script>
-  import moment from 'moment'
   export default {
     props: [
       'years',
       'expenseLocationCounts'
     ],
-    methods: {
-        format_date(value){
-           if (value) {
-             return moment(String(value)).format('YYYY')
-            }
-        },
-     },
   }
 </script>

@@ -20,20 +20,23 @@
           :categories="{{$categories}}"
         ></expense-create>
 
-        <br>
         <div class="container">
-          <div class="row row-cols-3">
-            <most-expense
-              :most-expense="{{$mostExpense}}"
-            ></most-expense>
-
-            <recent-expense
-              :recent-expense="{{$recentExpense}}"
-            ></recent-expense>
-
-            <least-expense
-              :least-expense="{{$leastExpense}}"
-            ></least-expense>
+          <div class="row">
+            <div class="col-sm">
+              <most-expense
+                :most-expense="{{$mostExpense}}"
+              ></most-expense>
+            </div>
+            <div class="col-sm">
+              <recent-expense
+                :recent-expense="{{$recentExpense}}"
+              ></recent-expense>
+            </div>
+            <div class="col-sm">
+              <least-expense
+                :least-expense="{{$leastExpense}}"
+              ></least-expense>
+            </div>
           </div>
         </div>
 
@@ -41,26 +44,34 @@
           :years="{{json_encode($years)}}"
           :total-expense-yearly="{{$totalExpenseYearly}}"
           :list-datas="{{$listDatas}}"
-        ><list-data>
-<!--
-        <expense-location-counts
-          :years="{{json_encode($years)}}"
-          :expense-location-counts="{{$expenseLocationCounts}}"
-        ></expense-location-counts>
+        ></list-data>
 
-        <current-month-expenses
-          :current-month-expenses="{{$currentMonthExpenses}}"
-        ></current-month-expenses>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm">
+              <expense-location-counts
+                :years="{{json_encode($years)}}"
+                :expense-location-counts="{{$expenseLocationCounts}}"
+              ></expense-location-counts>
+            </div>
+            <div class="col-sm">
+              <current-month-expenses
+                :current-month-expenses="{{$currentMonthExpenses}}"
+              ></current-month-expenses>
+            </div>
+          </div>
+        </div>
 
         <category-locations
           :category-locations="{{$categoryLocations}}"
           :categories="{{$categories}}"
         ></category-locations>
 
-        <expense-pages
-          :expense-pages="{{$expensePages}}"
-        ></expense-pages>
--->
+        <div>
+          <expense-pages
+            :expense-pages="{{json_encode($expensePages)}}"
+          ></expense-pages>
+        </div>
       </div>
 
 
