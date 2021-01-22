@@ -38,6 +38,7 @@
 
 <script>
 import axios from "axios";
+import Swal from 'sweetalert2';
 
   export default {
     props: [
@@ -58,8 +59,14 @@ import axios from "axios";
         axios.post('/api/store',this.fields)
              .then((response) => {
                this.fields = {};
-               alert('Veri başarıyla oluşturuldu');
-               success: location.reload()
+               Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Your work has been saved',
+                showConfirmButton: false,
+                timer: 1500,
+                success: location.reload()
+              });
              })
              .catch((error) => {
                console.log('Error');
