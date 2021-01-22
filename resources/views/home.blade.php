@@ -72,6 +72,7 @@
             :expense-pages="{{json_encode($expensePages)}}"
           ></expense-pages>
         </div>
+
       </div>
 
 
