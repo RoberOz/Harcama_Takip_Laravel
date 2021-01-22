@@ -37,6 +37,8 @@
 
 
 <script>
+import axios from "axios";
+
   export default {
     props: [
       'categories'
@@ -53,7 +55,7 @@
     },
     methods:{
       submitForm(){
-        this.axios.post('/api/store',this.fields)
+        axios.post('/api/store',this.fields)
              .then((response) => {
                this.fields = {};
                alert('Veri başarıyla oluşturuldu');
