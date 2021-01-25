@@ -24,17 +24,14 @@
           <div class="row">
             <div class="col-sm">
               <most-expense
-                :most-expense="{{$mostExpense}}"
               ></most-expense>
             </div>
             <div class="col-sm">
               <recent-expense
-                :recent-expense="{{$recentExpense}}"
               ></recent-expense>
             </div>
             <div class="col-sm">
               <least-expense
-                :least-expense="{{$leastExpense}}"
               ></least-expense>
             </div>
           </div>
@@ -42,8 +39,6 @@
 
         <list-data
           :years="{{json_encode($years)}}"
-          :total-expense-yearly="{{$totalExpenseYearly}}"
-          :list-datas="{{$listDatas}}"
         ></list-data>
 
         <div class="container">
@@ -51,19 +46,16 @@
             <div class="col-sm">
               <expense-location-counts
                 :years="{{json_encode($years)}}"
-                :expense-location-counts="{{$expenseLocationCounts}}"
               ></expense-location-counts>
             </div>
             <div class="col-sm">
               <current-month-expenses
-                :current-month-expenses="{{$currentMonthExpenses}}"
               ></current-month-expenses>
             </div>
           </div>
         </div>
 
         <category-locations
-          :category-locations="{{$categoryLocations}}"
           :categories="{{$categories}}"
         ></category-locations>
 

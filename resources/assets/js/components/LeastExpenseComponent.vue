@@ -17,9 +17,27 @@
 </template>
 
 <script>
+import axios from 'axios'
+
   export default {
-    props: [
-      'leastExpense'
-    ],
+    data() {
+      return {
+        leastExpense:[]
+      }
+    },
+    mounted(){
+       this.loadLeastExpense();
+    },
+    methods:{
+      loadLeastExpense(){
+        axios.get('/api/least-expense')
+             .then((response) => {
+               this.leastExpense = response.data;
+             })
+             .catch((error) => {
+               console.log('Error: ', error);
+             });
+      }
+    }
   }
 </script>

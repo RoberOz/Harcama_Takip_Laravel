@@ -18,10 +18,27 @@
 </template>
 
 <script>
-  var moment = require('moment');
+import axios from 'axios'
+
   export default {
-    props: [
-      'mostExpense'
-    ],
+    data() {
+      return {
+        mostExpense:[]
+      }
+    },
+    mounted(){
+       this.loadMostExpense();
+    },
+    methods:{
+      loadMostExpense(){
+        axios.get('/api/most-expense')
+             .then((response) => {
+               this.mostExpense = response.data;
+             })
+             .catch((error) => {
+               console.log('Error: ', error);
+             });
+      }
+    }
   }
 </script>

@@ -65,7 +65,6 @@ import Swal from 'sweetalert2';
                 title: 'Your work has been saved',
                 showConfirmButton: false,
                 timer: 1500,
-                success: location.reload()
               });
              })
              .catch((error) => {

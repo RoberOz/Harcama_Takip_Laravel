@@ -27,7 +27,26 @@
 <script>
   export default {
     props: [
-      'currentMonthExpenses'
+      'years'
     ],
+    data() {
+      return {
+        currentMonthExpenses:[]
+      }
+    },
+    mounted(){
+       this.loadCurrentMonthExpenses();
+    },
+    methods:{
+      loadCurrentMonthExpenses(){
+        axios.get('/api/current-month-expenses')
+             .then((response) => {
+               this.currentMonthExpenses = response.data;
+             })
+             .catch((error) => {
+               console.log('Error: ', error);
+             });
+      }
+    }
   }
 </script>

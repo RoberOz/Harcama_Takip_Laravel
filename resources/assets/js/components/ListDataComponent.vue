@@ -40,11 +40,41 @@
 </template>
 
 <script>
+import axios from 'axios'
+
   export default {
-    props: [
-      'years',
-      'totalExpenseYearly',
-      'listDatas'
+    props:[
+      'years'
     ],
+    data() {
+      return {
+        totalExpenseYearly:[],
+        listDatas:[]
+      }
+    },
+    mounted(){
+       this.loadTotalExpenseYearly();
+       this.loadListDatas();
+    },
+    methods:{
+      loadTotalExpenseYearly(){
+        axios.get('/api/total-expense-yearly')
+             .then((response) => {
+               this.totalExpenseYearly = response.data;
+             })
+             .catch((error) => {
+               console.log('Error: ', error);
+             });
+      },
+      loadListDatas(){
+        axios.get('/api/list-datas')
+             .then((response) => {
+               this.listDatas = response.data;
+             })
+             .catch((error) => {
+               console.log('Error: ', error);
+             });
+      },
+    }
   }
 </script>

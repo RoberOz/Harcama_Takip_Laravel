@@ -10,7 +10,7 @@
               <label>Yer: </label>
                 {{recentExpense.location}}<br>
               <label>Kategori: </label>
-                {{recentExpense.category.name}}<br>
+                {{recentExpense.category}}<br>
               <label>Tarih: </label>
                 {{recentExpense.date}}
             </div>
@@ -21,9 +21,27 @@
 </template>
 
 <script>
+import axios from 'axios'
+
   export default {
-    props: [
-      'recentExpense'
-    ],
+    data() {
+      return {
+        recentExpense:[]
+      }
+    },
+    mounted(){
+       this.loadRecentExpense();
+    },
+    methods:{
+      loadRecentExpense(){
+        axios.get('/api/recent-expense')
+             .then((response) => {
+               this.recentExpense = response.data;
+             })
+             .catch((error) => {
+               console.log('Error: ', error);
+             });
+      }
+    }
   }
 </script>

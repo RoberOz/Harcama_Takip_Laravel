@@ -23,10 +23,30 @@
 </template>
 
 <script>
+import axios from 'axios'
+
   export default {
-    props: [
-      'categoryLocations',
+    props:[
       'categories'
     ],
+    data() {
+      return {
+        categoryLocations:[]
+      }
+    },
+    mounted(){
+       this.loadCategoryLocations();
+    },
+    methods:{
+      loadCategoryLocations(){
+        axios.get('/api/category-locations')
+             .then((response) => {
+               this.categoryLocations = response.data;
+             })
+             .catch((error) => {
+               console.log('Error: ', error);
+             });
+      }
+    }
   }
 </script>

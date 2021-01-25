@@ -33,3 +33,29 @@
     ],
   }
 </script>
+
+<script>
+import axios from 'axios'
+
+  export default {
+    data() {
+      return {
+        expensePages:[]
+      }
+    },
+    mounted(){
+       this.loadExpensePages();
+    },
+    methods:{
+      loadExpensePages(){
+        axios.get('/api/expense-pages')
+             .then((response) => {
+               this.expensePages = response.data;
+             })
+             .catch((error) => {
+               console.log('Error: ', error);
+             });
+      }
+    }
+  }
+</script>

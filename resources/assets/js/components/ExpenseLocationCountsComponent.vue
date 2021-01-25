@@ -28,8 +28,26 @@
 <script>
   export default {
     props: [
-      'years',
-      'expenseLocationCounts'
+      'years'
     ],
+    data() {
+      return {
+        expenseLocationCounts:[]
+      }
+    },
+    mounted(){
+       this.loadExpenseLocationCounts();
+    },
+    methods:{
+      loadExpenseLocationCounts(){
+        axios.get('/api/expense-location-counts')
+             .then((response) => {
+               this.expenseLocationCounts = response.data;
+             })
+             .catch((error) => {
+               console.log('Error: ', error);
+             });
+      }
+    }
   }
 </script>
