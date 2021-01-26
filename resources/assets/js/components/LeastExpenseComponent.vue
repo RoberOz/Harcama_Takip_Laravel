@@ -6,7 +6,7 @@
           <strong><p align="center">En az harcama yapılan ay</p></strong>
             <div v-if="leastExpense">
               <label>Ay: </label>
-                {{leastExpense.expenseMonth}}<br>
+                {{selectMonthName(leastExpense.expenseMonth)}}<br>
               <label>Miktar: </label>
                 {{leastExpense.totalExpense}}
             </div>
@@ -46,6 +46,11 @@ import axios from 'axios'
           this.loadLeastExpense();
         }, 2000);
       },
+      selectMonthName(data){
+        var months = [ "","Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
+           "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık" ];
+        return months[data];
+      }
     }
   }
 </script>

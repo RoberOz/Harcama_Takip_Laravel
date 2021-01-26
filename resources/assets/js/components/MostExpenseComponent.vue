@@ -6,7 +6,7 @@
           <strong><p align="center">En çok harcama yapılan ay</p></strong>
             <div v-if="mostExpense">
               <label>Ay: </label>
-                {{mostExpense.expenseMonth}}
+                {{selectMonthName(mostExpense.expenseMonth)}}
                 <br>
               <label>Miktar: </label>
                 {{mostExpense.totalExpense}}
@@ -47,6 +47,11 @@ import axios from 'axios'
           this.loadMostExpense();
         }, 2000);
       },
+      selectMonthName(data){
+        var months = [ "","Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
+           "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık" ];
+        return months[data];
+      }
     }
   }
 </script>

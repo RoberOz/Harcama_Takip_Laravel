@@ -21,7 +21,7 @@
                   <div v-for="listData in listDatas">
                     <div v-if="listData.year == year.value">
                       Ay:
-                        {{listData.month}}<br>
+                        {{selectMonthName(listData.month)}}<br>
                       Toplam harcama miktar:
                         {{listData.totalExpense}}<br>
                       Toplam harcama sayısı:
@@ -83,6 +83,11 @@ import axios from 'axios';
           this.loadListDatas();
           this.loadTotalExpenseYearly();
         }, 2000);
+      },
+      selectMonthName(data){
+        var months = [ "","Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
+           "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık" ];
+        return months[data];
       },
     }
   }
