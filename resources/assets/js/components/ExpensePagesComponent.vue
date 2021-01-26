@@ -10,15 +10,18 @@
                 <td align="center" style="width: 150px"><strong>-Kategori-</strong></td>
                 <td align="center" style="width: 150px"><strong>-Tarih-</strong></td>
               </tr>
-              <div v-for="expensePage in expensePages">
-                <tr height="50">
-                  <td align="center" style="width: 150px">{{expensePage.amount}}</td>
-                  <td align="center" style="width: 150px">{{expensePage.location}}</td>
-                  <td align="center" style="width: 150px">{{expensePage.category_name}}</td>
-                  <td align="center" style="width: 150px">{{expensePage.date}}</td>
-                </tr>
-              </div>
-              <div align='center'>links</div>
+          <div v-for="expensePage in expensePages.data">
+            <tr height="50">
+              <td align="center" style="width: 150px">{{expensePage.amount}}</td>
+              <td align="center" style="width: 150px">{{expensePage.location}}</td>
+              <td align="center" style="width: 150px">{{expensePage.category.name}}</td>
+              <td align="center" style="width: 150px">{{expensePage.date}}</td>
+            </tr>
+          </div>
+
+          <div align='center'>
+            <pagination :data="expensePages" @pagination-change-page="getResults"></pagination>
+          </div>
         </div>
       </div>
     </div>
@@ -26,6 +29,7 @@
 </template>
 
 <script>
+Vue.component('pagination', require('laravel-vue-pagination'));
 import axios from 'axios'
 
   export default {
@@ -34,13 +38,22 @@ import axios from 'axios'
     },
     data() {
       return {
-        expensePages:[],
+        expensePages:[]
       }
     },
     mounted(){
        this.loadExpensePages();
     },
     methods:{
+      getResults(page = 1) {
+			axios.get('http://localhost:8000/api/expense-pages?page=' + page)
+				.then(response => {
+					this.expensePages = response.data;
+				})
+        .catch((error) => {
+          console.log('Error: ', error);
+        });
+		  },
       loadExpensePages(){
         axios.get('/api/expense-pages')
              .then((response) => {

@@ -19,7 +19,7 @@ class ExpenseController extends Controller
                     ->orderBy('totalExpense', 'DESC')
                     ->first();
 
-    return response($mostExpense);
+    return response()->json($mostExpense);
   }
 
   public function recentExpense()
@@ -28,7 +28,7 @@ class ExpenseController extends Controller
                       ->orderBy('date', 'DESC')
                       ->first();
 
-    return response($recentExpense);
+    return response()->json($recentExpense);
   }
 
   public function leastExpense()
@@ -39,7 +39,7 @@ class ExpenseController extends Controller
                     ->orderBy('totalExpense', 'ASC')
                     ->first();
 
-    return response($leastExpense);
+    return response()->json($leastExpense);
   }
 
   public function totalExpenseYearly()
@@ -49,7 +49,7 @@ class ExpenseController extends Controller
                           ->orderBy('year')
                           ->get();
 
-    return response($totalExpenseYearly);
+    return response()->json($totalExpenseYearly);
   }
 
   public function listDatas()
@@ -59,7 +59,7 @@ class ExpenseController extends Controller
                  ->orderBy('year')
                  ->get();
 
-    return response($listDatas);
+    return response()->json($listDatas);
   }
 
   public function expenseLocationCounts()
@@ -68,7 +68,7 @@ class ExpenseController extends Controller
                              ->groupBy('year', 'location')
                              ->get();
 
-    return response($expenseLocationCounts);
+    return response()->json($expenseLocationCounts);
   }
 
   public function currentMonthExpenses()
@@ -78,7 +78,7 @@ class ExpenseController extends Controller
                             ->whereMonth('date', Carbon::now()->month)
                             ->get();
 
-    return response($currentMonthExpenses);
+    return response()->json($currentMonthExpenses);
   }
 
   public function categoryLocations()
@@ -87,23 +87,15 @@ class ExpenseController extends Controller
                          ->groupBy('category_id', 'location')
                          ->get();
 
-    return response($categoryLocations);
+    return response()->json($categoryLocations);
   }
 
   public function expensePages()
   {
-    $expensePagination = Expense::with('Category')
-                         ->orderby('date', 'DESC')
-                         ->paginate(10);
-    foreach ($expensePagination as $expensePaginate) {
-      $expensePages[] = [
-        'amount' => $expensePaginate->amount,
-        'location' => $expensePaginate->location,
-        'date' => $expensePaginate->date,
-        'category_name' => $expensePaginate->category->name,
-      ];
-    }
+    $expensePages= Expense::with('Category')
+                   ->orderby('date', 'DESC')
+                   ->paginate(10);
 
-    return response($expensePages);
+    return response()->json($expensePages);
   }
 }

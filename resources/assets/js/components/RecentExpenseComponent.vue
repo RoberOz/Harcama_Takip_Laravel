@@ -10,7 +10,7 @@
               <label>Yer: </label>
                 {{recentExpense.location}}<br>
               <label>Kategori: </label>
-                {{recentExpense.category}}<br>
+                {{recentExpense.category.name}}<br>
               <label>Tarih: </label>
                 {{recentExpense.date}}
             </div>
