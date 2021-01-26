@@ -63,13 +63,17 @@ Vue.prototype.$eventBus = new Vue();
                Swal.fire({
                 position: 'top-end',
                 icon: 'success',
-                title: 'Your work has been saved',
+                title: 'Harcama başarıyla gönderildi',
                 showConfirmButton: false,
                 timer: 1500,
               });
              })
              .catch((error) => {
-               console.log('Error');
+               Swal.fire({
+                icon: 'error',
+                title: 'Başarısız',
+                text: 'Eksik veya hatalı giriş yaptınız!'
+              });
              });
       },
       updateComponents(){
