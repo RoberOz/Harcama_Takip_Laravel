@@ -2,14 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use App\Category;
 use App\Expense;
-use App\Http\Resources\ExpenseCollection;
-
-use Carbon\Carbon;
-
 use DateInterval;
 use DatePeriod;
 use DateTime;
@@ -18,7 +12,6 @@ class MainController extends Controller
 {
     public function index()
     {
-
         $categories = Category::all();
 
         $recentExpense = Expense::with('Category')
@@ -31,13 +24,12 @@ class MainController extends Controller
 
         $yearsUnorganized = new DatePeriod($start, $intervalYears, $end);
         foreach ($yearsUnorganized as $yearUnorganized) {
-          $years[] = ['value' => $yearUnorganized->format('Y')];
+            $years[] = ['value' => $yearUnorganized->format('Y')];
         }
 
         return view('home')->with(compact(
             'categories',
             'years'
         ));
-
     }
 }
