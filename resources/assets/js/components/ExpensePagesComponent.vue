@@ -18,8 +18,7 @@
               <td align="center" style="width: 150px">{{expensePage.date}}</td>
             </tr>
           </div>
-
-          <div align='center'>
+          <div align="center">
             <pagination :data="expensePages" @pagination-change-page="getResults"></pagination>
           </div>
         </div>
@@ -38,7 +37,7 @@ import axios from 'axios'
     },
     data() {
       return {
-        expensePages:[]
+        expensePages:{}
       }
     },
     mounted(){
@@ -46,7 +45,7 @@ import axios from 'axios'
     },
     methods:{
       getResults(page = 1) {
-			axios.get('http://localhost:8000/api/expense-pages?page=' + page)
+			axios.get('./api/expense-pages?page='+page)
 				.then(response => {
 					this.expensePages = response.data;
 				})

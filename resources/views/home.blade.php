@@ -59,10 +59,8 @@
           :categories="{{$categories}}"
         ></category-locations>
 
-        <div>
-          <expense-pages
-          ></expense-pages>
-        </div>
+        <expense-pages
+        ></expense-pages>
 
       </div>
 

@@ -29,7 +29,7 @@ import axios from 'axios'
     },
     data() {
       return {
-        recentExpense:[]
+        recentExpense:""
       }
     },
     mounted(){
