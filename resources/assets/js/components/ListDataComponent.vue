@@ -1,5 +1,5 @@
 <template>
-  <div class="col">
+  <div class="col" @updateComponents="update">
     <div class="panel panel-default">
       <div class="panel-body">
         <strong><p align="center">Yıllık Harcamalar</p></strong>
@@ -40,12 +40,15 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from 'axios';
 
   export default {
     props:[
       'years'
     ],
+    created() {
+      this.$eventBus.$on('updateComponents', this.update);
+    },
     data() {
       return {
         totalExpenseYearly:[],
@@ -74,6 +77,12 @@ import axios from 'axios'
              .catch((error) => {
                console.log('Error: ', error);
              });
+      },
+      update(){
+        setTimeout(() => {
+          this.loadListDatas();
+          this.loadTotalExpenseYearly();
+        }, 2000);
       },
     }
   }

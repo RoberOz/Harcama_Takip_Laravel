@@ -1,5 +1,5 @@
 <template>
-  <div class="col">
+  <div class="col" @updateComponents="update">
     <div align="center">
       <div class="panel panel-default">
         <div class="panel-body">
@@ -24,6 +24,9 @@
 import axios from 'axios'
 
   export default {
+    created() {
+      this.$eventBus.$on('updateComponents', this.update);
+    },
     data() {
       return {
         recentExpense:[]
@@ -41,7 +44,12 @@ import axios from 'axios'
              .catch((error) => {
                console.log('Error: ', error);
              });
-      }
+      },
+      update(){
+        setTimeout(() => {
+          this.loadRecentExpense();
+        }, 2000);
+      },
     }
   }
 </script>

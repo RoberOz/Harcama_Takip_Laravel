@@ -1,5 +1,5 @@
 <template>
-  <div class="col-md-5 col-md-offset-1" align="center">
+  <div class="col-md-5 col-md-offset-1" align="center" @updateComponents="update">
     <div class="panel panel-default">
       <div class="panel-body">
         <strong><p align="center">Kategorilere göre harcama yerleri</p></strong>
@@ -29,6 +29,9 @@ import axios from 'axios'
     props:[
       'categories'
     ],
+    created() {
+      this.$eventBus.$on('updateComponents', this.update);
+    },
     data() {
       return {
         categoryLocations:[]
@@ -46,7 +49,12 @@ import axios from 'axios'
              .catch((error) => {
                console.log('Error: ', error);
              });
-      }
+      },
+      update(){
+        setTimeout(() => {
+          this.loadCategoryLocations();
+        }, 2000);
+      },
     }
   }
 </script>

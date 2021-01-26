@@ -1,5 +1,5 @@
 <template>
-  <div class="container" style="width:530px">
+  <div class="container" style="width:530px" @updateComponents="update">
     <div class="row">
       <div class="col-md-12">
         <div class="panel panel-default">
@@ -29,6 +29,9 @@
     props: [
       'years'
     ],
+    created() {
+      this.$eventBus.$on('updateComponents', this.update);
+    },
     data() {
       return {
         currentMonthExpenses:[]
@@ -46,7 +49,12 @@
              .catch((error) => {
                console.log('Error: ', error);
              });
-      }
+      },
+      update(){
+        setTimeout(() => {
+          this.loadCurrentMonthExpenses();
+        }, 2000);
+      },
     }
   }
 </script>

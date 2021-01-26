@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" @updateComponents="update">
     <div class="row">
       <div class="col-md-12 col-md-offset-0">
         <div class="panel panel-default">
@@ -26,21 +26,15 @@
 </template>
 
 <script>
-  export default {
-    props: [
-      'expensePages',
-      'expensePagination',
-    ],
-  }
-</script>
-
-<script>
 import axios from 'axios'
 
   export default {
+    created() {
+      this.$eventBus.$on('updateComponents', this.update);
+    },
     data() {
       return {
-        expensePages:[]
+        expensePages:[],
       }
     },
     mounted(){
@@ -55,7 +49,12 @@ import axios from 'axios'
              .catch((error) => {
                console.log('Error: ', error);
              });
-      }
-    }
+      },
+      update(){
+        setTimeout(() => {
+          this.loadExpensePages();
+        }, 2000);
+      },
+    },
   }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="col" style="width:530px">
+  <div class="col" style="width:530px" @updateComponents="update">
     <div class="panel panel-default">
       <div class="panel-body">
         <strong><p align="center">Harcama Yerleri Tekrarı</p></strong>
@@ -30,6 +30,9 @@
     props: [
       'years'
     ],
+    created() {
+      this.$eventBus.$on('updateComponents', this.update);
+    },
     data() {
       return {
         expenseLocationCounts:[]
@@ -47,7 +50,12 @@
              .catch((error) => {
                console.log('Error: ', error);
              });
-      }
+      },
+      update(){
+        setTimeout(() => {
+          this.loadExpenseLocationCounts();
+        }, 2000);
+      },
     }
   }
 </script>

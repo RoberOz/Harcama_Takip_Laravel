@@ -28,7 +28,7 @@
           </td>
         </tr>
         <tr height="35">
-          <td  align="center" colspan="2"><button type="submit">Oluştur</button></td>
+          <td  align="center" colspan="2"><button type="submit" @click="updateComponents()">Oluştur</button></td>
         </tr>
       </table>
     </form>
@@ -39,6 +39,7 @@
 <script>
 import axios from "axios";
 import Swal from 'sweetalert2';
+Vue.prototype.$eventBus = new Vue();
 
   export default {
     props: [
@@ -70,6 +71,9 @@ import Swal from 'sweetalert2';
              .catch((error) => {
                console.log('Error');
              });
+      },
+      updateComponents(){
+        this.$eventBus.$emit('updateComponents');
       }
     }
   }
