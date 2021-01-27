@@ -25,7 +25,9 @@ class ExpenseController extends Controller
                       ->orderBy('date', 'DESC')
                       ->first();
 
-        return response()->json($recentExpense);
+        if ($recentExpense != NULL) {
+          return response()->json($recentExpense);
+        }
     }
 
     public function leastExpense()
