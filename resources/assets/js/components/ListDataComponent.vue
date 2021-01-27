@@ -5,8 +5,8 @@
         <strong><p align="center">Yıllık Harcamalar</p></strong>
           <div class="container">
             <div class="row">
-              <div  v-for="year in years">
-                <div class="col-15 col-sm-15" style="width:285px" align="center"><strong>{{year.value}}</strong>
+              <div v-for="year in years" class="col-3 col-sm-3">
+                <div style="width:285px" align="center"><strong>{{year.value}}</strong>
                   <br>
                   <strong>
                     Senelik Toplam Harcama:
