@@ -44,8 +44,7 @@ class SendMail extends Notification
     {
         return (new MailMessage)
                 ->subject('Harcama Takip - Yeni Harcama.')
-                ->view('notificationCustomEmail',['expense' => $this->expense])
-                ->action('Siteye Git', url('/'));
+                ->view('notificationCustomEmail',['expense' => $this->expense]);
     }
 
     /**

@@ -12,24 +12,34 @@
   </head>
 
   <body>
-    <div>
-      <table>
-        <tr>
-          <td>Yeni harcama oluşturuldu</td>
-        </tr>
-        <tr>
-          <td>Harcama Miktarı: {{$expense->amount}}</td>
-        <tr>
-        </tr>
-          <td>Harcama Yeri: {{$expense->location}}</td>
-        <tr>
-        <tr>
-          <td>Harcama Tarihi: {{$expense->date}}</td>
-        </tr>
-        <tr>
-          <td><a href="http://localhost:8000/">Siteye Git</a></td>
-        </tr>
-      </table>
+    <div id="app">
+
+      <div class="container">
+        <div align="center">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <table>
+                <tr>
+                  <strong style="font-family:Arial">Yeni harcama oluşturuldu</strong>
+                </tr>
+                <tr>
+                  <td style="font-family:Arial">Harcama Miktarı: {{$expense->amount}}</td>
+                <tr>
+                </tr>
+                  <td style="font-family:Arial">Harcama Yeri: {{$expense->location}}</td>
+                <tr>
+                <tr>
+                  <td style="font-family:Arial">Harcama Tarihi: {{$expense->date}}</td>
+                </tr>
+                <tr>
+                  <td  align="center" colspan="2"><a href="http://localhost:8000/">Siteye Git</a></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
     <div>
   </body>
 </html>
