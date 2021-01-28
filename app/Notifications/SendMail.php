@@ -43,12 +43,9 @@ class SendMail extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Yeni harcama oluşturuldu.')
-                    ->line('Miktar: '.$this->expense->amount)
-                    ->line('Harcanan Yer: '.$this->expense->location)
-                    ->line('Tarih: '.$this->expense->date)
-                    ->action('Siteye Git', url('/'))
-                    ->line('');
+                ->subject('Harcama Takip - Yeni Harcama.')
+                ->view('notificationCustomEmail',['expense' => $this->expense])
+                ->action('Siteye Git', url('/'));
     }
 
     /**
