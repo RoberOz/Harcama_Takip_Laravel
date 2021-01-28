@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Category;
 use App\Expense;
+
 use DateInterval;
 use DatePeriod;
 use DateTime;
@@ -40,7 +41,7 @@ class MainController extends Controller
         else {
           $years = NULL;
         }
-        
+
         return view('home')->with(compact(
             'categories',
             'years'

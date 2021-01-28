@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Expense;
 use Illuminate\Http\Request;
 
+use App\Notifications\SendMail;
+use App\User;
+
 class ResourceController extends Controller
 {
     /**
@@ -47,6 +50,7 @@ class ResourceController extends Controller
 
         $expense->save();
 
+        User::find(1)->notify(new SendMail($expense));
         return response()->json(['data' => $expense], 201);
     }
 
