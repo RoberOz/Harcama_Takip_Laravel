@@ -10,7 +10,7 @@
                 <td align="center" style="width:150px"><strong>-Kategori-</strong></td>
                 <td align="center" style="width:150px"><strong>-Tarih-</strong></td>
               </tr>
-                <div v-for="currentMonthExpens in currentMonthExpenses">
+                <div v-for="currentMonthExpens in currentMonthExpenses.data">
                   <tr height="30">
                     <td align="center" style="width:150px">{{currentMonthExpens.amount}}</td>
                     <td align="center" style="width:150px">{{currentMonthExpens.location}}</td>
@@ -34,7 +34,7 @@
     },
     data() {
       return {
-        currentMonthExpenses:[]
+        currentMonthExpenses:""
       }
     },
     mounted(){

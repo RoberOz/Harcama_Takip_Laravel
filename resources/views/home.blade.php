@@ -31,9 +31,9 @@
     </div>
   </div>
 
-  <list-data
+  <expense-list-yearly
     :years="{{json_encode($years)}}"
-  ></list-data>
+  ></expense-list-yearly>
 
   <div class="container">
     <div class="row">
@@ -49,9 +49,9 @@
     </div>
   </div>
 
-  <category-locations
+  <categories-group-by-location
     :categories="{{$categories}}"
-  ></category-locations>
+  ></categories-group-by-location>
 
   <expense-pages
   ></expense-pages>

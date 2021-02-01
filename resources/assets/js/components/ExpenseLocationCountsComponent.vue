@@ -8,7 +8,7 @@
               <div v-for="year in years" class="col-3 col-sm-3">
                 <div style="width:105px" align="center"><strong>{{year.value}}</strong>
                   <br>
-                  <div v-for="expenseLocationCount in expenseLocationCounts">
+                  <div v-for="expenseLocationCount in expenseLocationCounts.data">
                     <div v-if="expenseLocationCount.year == year.value">
                       {{(expenseLocationCount.location)}}
                       -

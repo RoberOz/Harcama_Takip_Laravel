@@ -6,10 +6,10 @@
           <strong><p align="center">En çok harcama yapılan ay</p></strong>
             <div v-if="mostExpense">
               <label>Ay: </label>
-                {{selectMonthName(mostExpense.expenseMonth)}}
+                {{selectMonthName(mostExpense.data.expenseMonth)}}
                 <br>
               <label>Miktar: </label>
-                {{mostExpense.totalExpense}}
+                {{mostExpense.data.totalExpense}}
             </div>
         </div>
       </div>
@@ -26,7 +26,7 @@ import axios from 'axios'
     },
     data() {
       return {
-        mostExpense:[]
+        mostExpense:""
       }
     },
     mounted(){

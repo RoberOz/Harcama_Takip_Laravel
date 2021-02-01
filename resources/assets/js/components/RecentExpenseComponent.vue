@@ -6,13 +6,13 @@
           <strong><p align="center">Son yapılan harcama</p></strong>
             <div v-if="recentExpense">
               <label>Miktar: </label>
-                {{recentExpense.amount}}<br>
+                {{recentExpense.data.amount}}<br>
               <label>Yer: </label>
-                {{recentExpense.location}}<br>
+                {{recentExpense.data.location}}<br>
               <label>Kategori: </label>
-                {{recentExpense.category.name}}<br>
+                {{recentExpense.data.category.name}}<br>
               <label>Tarih: </label>
-                {{recentExpense.date}}
+                {{recentExpense.data.date}}
             </div>
         </div>
       </div>

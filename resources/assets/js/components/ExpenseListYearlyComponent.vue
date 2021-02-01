@@ -10,7 +10,7 @@
                   <br>
                   <strong>
                     Senelik Toplam Harcama:
-                    <div v-for="totalExpenseYear in totalExpenseYearly">
+                    <div v-for="totalExpenseYear in totalExpenseYearly.data">
                       <div v-if="totalExpenseYear.year == year.value">
                         {{totalExpenseYear.totalExpense}}
                       </div>
@@ -18,14 +18,14 @@
                   </strong>
                   <br>
                   <br>
-                  <div v-for="listData in listDatas">
-                    <div v-if="listData.year == year.value">
+                  <div v-for="expenseListYear in expenseListYearly.data">
+                    <div v-if="expenseListYear.year == year.value">
                       Ay:
-                        {{selectMonthName(listData.month)}}<br>
+                        {{selectMonthName(expenseListYear.month)}}<br>
                       Toplam harcama miktar:
-                        {{listData.totalExpense}}<br>
+                        {{expenseListYear.totalExpense}}<br>
                       Toplam harcama sayısı:
-                        {{listData.times}}<br>
+                        {{expenseListYear.times}}<br>
                         <br>
                     </div>
                   </div>
@@ -51,13 +51,13 @@ import axios from 'axios';
     },
     data() {
       return {
-        totalExpenseYearly:[],
-        listDatas:[]
+        totalExpenseYearly:"",
+        expenseListYearly:""
       }
     },
     mounted(){
        this.loadTotalExpenseYearly();
-       this.loadListDatas();
+       this.loadExpenseListYearly();
     },
     methods:{
       loadTotalExpenseYearly(){
@@ -69,10 +69,10 @@ import axios from 'axios';
                console.log('Error: ', error);
              });
       },
-      loadListDatas(){
-        axios.get('/api/list-datas')
+      loadExpenseListYearly(){
+        axios.get('/api/expense-list-yearly')
              .then((response) => {
-               this.listDatas = response.data;
+               this.expenseListYearly = response.data;
              })
              .catch((error) => {
                console.log('Error: ', error);
@@ -80,7 +80,7 @@ import axios from 'axios';
       },
       update(){
         setTimeout(() => {
-          this.loadListDatas();
+          this.loadExpenseListYearly();
           this.loadTotalExpenseYearly();
         }, 2000);
       },

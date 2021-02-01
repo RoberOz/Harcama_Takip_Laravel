@@ -6,9 +6,9 @@
           <strong><p align="center">En az harcama yapılan ay</p></strong>
             <div v-if="leastExpense">
               <label>Ay: </label>
-                {{selectMonthName(leastExpense.expenseMonth)}}<br>
+                {{selectMonthName(leastExpense.data.expenseMonth)}}<br>
               <label>Miktar: </label>
-                {{leastExpense.totalExpense}}
+                {{leastExpense.data.totalExpense}}
             </div>
         </div>
       </div>
@@ -25,7 +25,7 @@ import axios from 'axios'
     },
     data() {
       return {
-        leastExpense:[]
+        leastExpense:""
       }
     },
     mounted(){

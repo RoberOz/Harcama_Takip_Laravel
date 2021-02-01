@@ -3,8 +3,9 @@
 
 
 
-
 Auth::routes();
 
+
 Route::get('/', 'MainController@index')->name('main');
-Route::resource('process','ResourceController',['only'=> ['store']]);
+
+Route::resource('store','StoreController',['only'=> ['store']]);

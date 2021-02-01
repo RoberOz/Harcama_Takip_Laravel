@@ -7,10 +7,10 @@
             <div class="row">
               <div class="col-4 col-sm-4" v-for="category in categories">
                 <div><strong>-{{category.name}}-</strong>
-                  <div v-for="categoryLocation in categoryLocations">
-                    <div v-if="categoryLocation.category_id == category.id">
+                  <div v-for="categoryGroupByLocation in categoriesGroupByLocation.data">
+                    <div v-if="categoryGroupByLocation.category_id == category.id">
                       <br>
-                      {{categoryLocation.location}}
+                      {{categoryGroupByLocation.location}}
                     </div>
                   </div>
                 </div>
@@ -34,17 +34,17 @@ import axios from 'axios'
     },
     data() {
       return {
-        categoryLocations:[]
+        categoriesGroupByLocation:[]
       }
     },
     mounted(){
-       this.loadCategoryLocations();
+       this.loadCategoriesGroupByLocation();
     },
     methods:{
-      loadCategoryLocations(){
-        axios.get('/api/category-locations')
+      loadCategoriesGroupByLocation(){
+        axios.get('/api/categories-group-by-location')
              .then((response) => {
-               this.categoryLocations = response.data;
+               this.categoriesGroupByLocation = response.data;
              })
              .catch((error) => {
                console.log('Error: ', error);
@@ -52,7 +52,7 @@ import axios from 'axios'
       },
       update(){
         setTimeout(() => {
-          this.loadCategoryLocations();
+          this.loadCategoriesGroupByLocation();
         }, 2000);
       },
     }

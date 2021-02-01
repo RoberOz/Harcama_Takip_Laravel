@@ -2,21 +2,22 @@
 
 use Illuminate\Http\Request;
 //use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomePageController;
 
 
 
-Route::get('/most-expense','Api\V1\ExpenseController@mostExpense');
-Route::get('/recent-expense','Api\V1\ExpenseController@recentExpense');
-Route::get('/least-expense','Api\V1\ExpenseController@leastExpense');
-Route::get('/total-expense-yearly','Api\V1\ExpenseController@totalExpenseYearly');
-Route::get('/list-datas','Api\V1\ExpenseController@listDatas');
-Route::get('/expense-location-counts','Api\V1\ExpenseController@expenseLocationCounts');
-Route::get('/current-month-expenses','Api\V1\ExpenseController@currentMonthExpenses');
-Route::get('/category-locations','Api\V1\ExpenseController@categoryLocations');
-Route::get('/expense-pages','Api\V1\ExpenseController@expensePages');
+Route::namespace('Api\V1')->group(function () {
+  Route::get('/most-expense','ExpenseController@getMostExpense');
+  Route::get('/recent-expense','ExpenseController@getRecentExpense');
+  Route::get('/least-expense','ExpenseController@getLeastExpense');
+  Route::get('/total-expense-yearly','ExpenseController@getTotalExpenseYearly');
+  Route::get('/expense-list-yearly','ExpenseController@getExpenseListYearly');
+  Route::get('/expense-location-counts','ExpenseController@getExpenseLocationCounts');
+  Route::get('/current-month-expenses','ExpenseController@getCurrentMonthExpenses');
+  Route::get('/categories-group-by-location','ExpenseController@getCategoriesGroupByLocation');
+  Route::get('/expense-pages','ExpenseController@getExpensePages');
+});
 
-Route::post('/store','ResourceController@store');
+Route::post('/store','StoreController@store');
 
 
 
