@@ -61,7 +61,7 @@ import axios from 'axios';
     },
     methods:{
       loadTotalExpenseYearly(){
-        axios.get('/api/total-expense-yearly')
+        axios.get('/api/v1/expenses/total-expense-yearly')
              .then((response) => {
                this.totalExpenseYearly = response.data;
              })
@@ -70,7 +70,7 @@ import axios from 'axios';
              });
       },
       loadExpenseListYearly(){
-        axios.get('/api/expense-list-yearly')
+        axios.get('/api/v1/expenses/expense-list-yearly')
              .then((response) => {
                this.expenseListYearly = response.data;
              })

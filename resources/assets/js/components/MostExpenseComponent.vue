@@ -34,7 +34,7 @@ import axios from 'axios'
     },
     methods:{
       loadMostExpense(){
-        axios.get('/api/most-expense')
+        axios.get('/api/v1/expenses/most-expense')
              .then((response) => {
                this.mostExpense = response.data;
              })

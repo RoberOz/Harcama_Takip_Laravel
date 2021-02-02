@@ -37,7 +37,7 @@ import axios from 'axios'
     },
     methods:{
       loadRecentExpense(){
-        axios.get('/api/recent-expense')
+        axios.get('/api/v1/expenses/recent-expense')
              .then((response) => {
                this.recentExpense = response.data;
              })

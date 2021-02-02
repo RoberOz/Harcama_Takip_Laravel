@@ -43,7 +43,7 @@
     },
     methods:{
       loadExpenseLocationCounts(){
-        axios.get('/api/expense-location-counts')
+        axios.get('/api/v1/expenses/expense-location-counts')
              .then((response) => {
                this.expenseLocationCounts = response.data;
              })

@@ -57,7 +57,7 @@ Vue.prototype.$eventBus = new Vue();
     },
     methods:{
       submitForm(){
-        axios.post('/api/store',this.fields)
+        axios.post('/api/v1/expenses/create-expense',this.fields)
              .then((response) => {
                this.fields = {};
                Swal.fire({

@@ -33,7 +33,7 @@ import axios from 'axios'
     },
     methods:{
       loadLeastExpense(){
-        axios.get('/api/least-expense')
+        axios.get('/api/v1/expenses/least-expense')
              .then((response) => {
                this.leastExpense = response.data;
              })

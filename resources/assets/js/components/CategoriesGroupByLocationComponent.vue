@@ -42,7 +42,7 @@ import axios from 'axios'
     },
     methods:{
       loadCategoriesGroupByLocation(){
-        axios.get('/api/categories-group-by-location')
+        axios.get('/api/v1/expenses/categories-group-by-location')
              .then((response) => {
                this.categoriesGroupByLocation = response.data;
              })

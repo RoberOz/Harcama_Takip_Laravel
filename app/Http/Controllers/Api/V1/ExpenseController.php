@@ -122,7 +122,7 @@ class ExpenseController extends Controller
         return response()->json($expensePages);
     }
 
-    public function store(Request $request)
+    public function createExpense(Request $request)
     {
         $this->validate($request, [
         'amount' => 'required|numeric',

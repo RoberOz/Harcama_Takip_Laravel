@@ -42,7 +42,7 @@
     },
     methods:{
       loadCurrentMonthExpenses(){
-        axios.get('/api/current-month-expenses')
+        axios.get('/api/v1/expenses/current-month-expenses')
              .then((response) => {
                this.currentMonthExpenses = response.data;
              })

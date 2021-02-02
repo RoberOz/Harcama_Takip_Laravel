@@ -45,7 +45,7 @@ import axios from 'axios'
     },
     methods:{
       getResults(page = 1) {
-			axios.get('./api/expense-pages?page='+page)
+			axios.get('./api/v1/expenses/expense-pages?page='+page)
 				.then(response => {
 					this.expensePages = response.data;
 				})
@@ -54,7 +54,7 @@ import axios from 'axios'
         });
 		  },
       loadExpensePages(){
-        axios.get('/api/expense-pages')
+        axios.get('/api/v1/expenses/expense-pages')
              .then((response) => {
                this.expensePages = response.data;
              })
