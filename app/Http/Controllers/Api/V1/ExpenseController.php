@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Expense;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Notifications\SendMail;
+
+use App\Expense;
+use App\User;
+
 use Carbon\Carbon;
 
 class ExpenseController extends Controller
@@ -115,5 +120,27 @@ class ExpenseController extends Controller
                    ->paginate(10);
 
         return response()->json($expensePages);
+    }
+
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+        'amount' => 'required|numeric',
+        'category_id' => 'required|integer|exists:categories,id',
+        'location' => 'required|max:70',
+        'date' => 'required|date',
+      ]);
+
+        $expense = new Expense();
+        $expense->category_id = $request->category_id;
+        $expense->amount = $request->amount;
+        $expense->location = $request->location;
+        $expense->date = $request->date;
+
+        $expense->save();
+
+        User::find(1)->notify(new SendMail($expense));
+
+        return response()->json([], 201);
     }
 }
