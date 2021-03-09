@@ -15,8 +15,17 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
+Vue.component('expense-create', require('./components/ExpenseCreateFormComponent.vue'));
+Vue.component('most-expense', require('./components/MostExpenseComponent.vue'));
+Vue.component('recent-expense', require('./components/RecentExpenseComponent.vue'));
+Vue.component('least-expense', require('./components/LeastExpenseComponent.vue'));
+Vue.component('expense-list-yearly', require('./components/ExpenseListYearlyComponent.vue'));
+Vue.component('expense-location-counts', require('./components/ExpenseLocationCountsComponent.vue'));
+Vue.component('current-month-expenses', require('./components/CurrentMonthExpensesComponent.vue'));
+Vue.component('categories-group-by-location', require('./components/CategoriesGroupByLocationComponent.vue'));
+Vue.component('expense-pages', require('./components/ExpensePagesComponent.vue'));
+
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
 });

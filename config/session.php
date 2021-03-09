@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Default Session Driver
@@ -162,7 +161,6 @@ return [
     */
 
     'secure' => env('SESSION_SECURE_COOKIE', false),
-
     /*
     |--------------------------------------------------------------------------
     | HTTP Access Only
@@ -175,5 +173,4 @@ return [
     */
 
     'http_only' => true,
-
 ];
